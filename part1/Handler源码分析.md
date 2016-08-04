@@ -1,21 +1,20 @@
 #Handler部分相关代码分析
 ------
-** 一、Handler是什么？ **
+**一、Handler是什么?**
 	文档是这么说的：
 		> A Handler allows you to send and process Message and Runnable objects associated with a thread's MessageQueue. Each Handler instance is associated with a single thread and that thread's message queue. When you create a new Handler, it is bound to the thread / message queue of the thread that is creating it -- from that point on, it will deliver messages and runnables to that message queue and execute them as they come out of the message queue. 
 	There are two main uses for a Handler: (1) to schedule messages and runnables to be executed as some point in the future; and (2) to enqueue an action to be performed on a different thread than your own.
 	大意是说一个Handler可以处理与之相关的线程的MessageQueen的消息、Runable对象，同时可以发送消息、Runnable对象。Handler的两个主要用途是处理某个将要发生的事件、向另一个线程发送消息
-** 二、基本使用**
+**二、基本使用**
 	@Override
     public void run() {
         Looper.prepare();
         handler=new Handler(Looper.myLooper(),new HandlerCallBack());
         Looper.loop();
     }
-** 三、问题详解  **
+**三、问题详解**
 	由一、二我们知道Handler需要绑定一个线程、消息队列，那么是在哪里绑定的呢？二中的Looper又是什么？
-	首先从二中的代码开始看
-	Looper.prepare();这个做了什么
+	首先从二中的代码开始看Looper.prepare()这个方法做了什么
 	public static void prepare() {
         prepare(true);
     }
@@ -86,6 +85,6 @@
         return new Message();
     }
     可以看出来Message类中是存在一个消息池的，而且是使用链表的形式来实现的。
-** 四、总结 **
+**四、总结**
 
     
