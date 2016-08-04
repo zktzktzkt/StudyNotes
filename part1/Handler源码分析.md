@@ -126,9 +126,10 @@ There are two main uses for a Handler: (1) to schedule messages and runnables to
         }
     }
 ```
-*可以看出来Message类中是存在一个消息池的，而且是使用链表的形式来实现的。
+*可以看出来Message类中是存在一个消息池的，而且是使用链表的形式来实现的.*
 
 **四、总结**
+
 	 从上面的分析可以知道Handler的工作有Handler、Looper、MessageQueue、Message构成，其中Handler用于消息的处理、Looper是一个调度者，它在一个死循环中不断的从MessageQueue中获取消息，而MessageQueen用于存储消息来解耦，最后Message是消息的载体。最后要提的是我认为使用Message的Obtain方法更高效，比较省。
 
     
