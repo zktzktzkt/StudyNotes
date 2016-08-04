@@ -29,9 +29,9 @@
 	首先从二中的代码开始看Looper.prepare()这个方法做了什么
 
 
-		public static void prepare() {
-        	prepare(true);//在Loop的prepare方法调用了重载方法
-    	}
+	```public static void prepare() {
+       	prepare(true);//在Loop的prepare方法调用了重载方法
+    }```
 
     
 
