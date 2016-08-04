@@ -12,7 +12,7 @@
 
 **二、基本使用**
 
-	`
+	
 
 		@Override
     	public void run() {
@@ -21,19 +21,19 @@
         	Looper.loop();
     	}
     
-    `
+    
 
 **三、问题详解**
 
 	由一、二我们知道Handler需要绑定一个线程、消息队列，那么是在哪里绑定的呢？二中的Looper又是什么？
 	首先从二中的代码开始看Looper.prepare()这个方法做了什么
 
-	```
-	public static void prepare() {
-        prepare(true);//在Loop的prepare方法调用了重载方法
-    }
 
-    ```
+		public static void prepare() {
+        	prepare(true);//在Loop的prepare方法调用了重载方法
+    	}
+
+    
 
     //可以看出来在这里创建了Looper对象，并放在了ThreadLocal中
     private static void prepare(boolean quitAllowed) {
