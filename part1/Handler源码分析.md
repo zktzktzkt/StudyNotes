@@ -3,7 +3,7 @@
 **一、Handler是什么?**
 
 	文档是这么说的：
-	A Handler allows you to send and process Message and Runnable objects associated with a thread's MessageQueue. 
+	>A Handler allows you to send and process Message and Runnable objects associated with a thread's MessageQueue. 
 	Each Handler instance is associated with a single thread and that thread's message queue. 
 	When you create a new Handler, it is bound to the thread / message queue of the thread that is creating it -- from that point on, it will deliver messages and runnables to that message queue and execute them as they come out of the message queue. 
 	There are two main uses for a Handler: (1) to schedule messages and runnables to be executed as some point in the future; and (2) to enqueue an action to be performed on a different thread than your own
@@ -12,7 +12,7 @@
 
 **二、基本使用**
 
-	``
+	`
 
 		@Override
     	public void run() {
@@ -21,7 +21,7 @@
         	Looper.loop();
     	}
     
-    ``
+    `
 
 **三、问题详解**
 
