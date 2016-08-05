@@ -75,8 +75,21 @@ There are two main uses for a Handler: (1) to schedule messages and runnables to
     }
 ```
 
-可以看到首先利用MessageQueue的next方法来获取一个Messaage对象，然后获取msg对应的Handler即target对象，分发消息到Handler中，最后回收消息，所以已经用过的Message对象不能再用。*所以这里的逻辑就是获取消息、处理消息、回收对象*
+可以看到首先利用MessageQueue的next方法来获取一个Messaage对象，然后获取msg对应的Handler即target对象，分发消息到Handler中，最后回收消息，所以已经用过的Message对象不能再用。**所以这里的逻辑就是获取消息、处理消息、回收对象**
 
+接下来再看Message的target对象即Handler对象怎么绑定的，从Message类的部分Obtain方法中看以看到在其中有对Handler赋值，但是如果没有使用这类方法来创建Message对象呢？那可能从哪赋值呢，从另一点看消息是用Handler对象发送的，这里有Handler的引用又有Message的引用，那么可以猜想这里也有可能绑定Handler，发送消息最终调用了如下方法来将消息插入队列
+
+```
+
+    private boolean enqueueMessage(MessageQueue queue, Message msg, long uptimeMillis) {
+        msg.target = this;//为target对象赋值
+        if (mAsynchronous) {
+            msg.setAsynchronous(true);
+        }
+        return queue.enqueueMessage(msg, uptimeMillis);
+    }
+
+```
 
 最后看Handler对消息的处理，源代码如下
 ```
@@ -126,7 +139,7 @@ There are two main uses for a Handler: (1) to schedule messages and runnables to
         }
     }
 ```
-*可以看出来Message类中是存在一个消息池的，而且是使用链表的形式来实现的.*
+**可以看出来Message类中是存在一个消息池的，而且是使用链表的形式来实现的.**
 
 **四、总结**
 
