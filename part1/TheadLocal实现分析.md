@@ -1,5 +1,6 @@
 ##TheadLocal源码分析
 **一、ThreadLocal是做什么用的?**
+
 先从文档开始看：
 
 >Implements a thread-local storage, that is, a variable for which each thread has its own value. All threads share the same ThreadLocal object, but each sees a different value when accessing it, and changes made by one thread do not affect the other threads. The implementation supports null values.
