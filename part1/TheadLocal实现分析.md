@@ -1,5 +1,5 @@
 ##TheadLocal源码分析
-**一、ThreadLocal是做什么用的?
+**一、ThreadLocal是做什么用的?**
 先从文档开始看：
 
 >Implements a thread-local storage, that is, a variable for which each thread has its own value. All threads share the same ThreadLocal object, but each sees a different value when accessing it, and changes made by one thread do not affect the other threads. The implementation supports null values.
@@ -7,8 +7,11 @@
 大意是说它实现了一种存储方式，使得每一个线程共享一个ThreadLocal对象，但是对于每一个线程对于ThreadLocal对象中值的修改不影响其他线程的ThreadLocal的值，每个线程获取的值可以是不一样的。
 
 **二、ThreadLocal实现方法的分析**
+
 以下源码为jdk1.8
-从文档可以看出来ThreadLocal主要包括set、get方法，以下也是主要关注其实现
+
+从文档可以看出来ThreadLocal主要包括set、get方法，以下也是主要关注这两个的实现
+
 首先看这set方法的实现
 ```
     public void set(T value) {
@@ -32,7 +35,7 @@
     ThreadLocalMap(ThreadLocal<?> firstKey, Object firstValue) {
             table = new Entry[INITIAL_CAPACITY];
             int i = firstKey.threadLocalHashCode & (INITIAL_CAPACITY - 1);//计算索引值
-            table[i] = new Entry(firstKey, firstValue);
+            table[i] = new Entry(firstKey, firstValue);//创建副本来备份初值
             size = 1;
             setThreshold(INITIAL_CAPACITY);
         }
@@ -103,4 +106,5 @@
 从代码来看get方法首先先利用ThreadLocalMap来获取Entry的数据，如果只为空则调用初始化方法initialValue并将该值的备份赋到Entry中。这也就是为什么使用ThreadLocal的时候一般会重写initialValue来返回初值
 
 **三、总结**
+
 ThreadLocal使用initialValue这个方法为每个线程提供初始值或者直接使用set方法设置值，而实现各个线程对共享值得操作而不互相影响的原理则是利用了**Thread类的中的threadLocals字段来存储副本(该类是一个专门为ThreadLocal实现的一个定制化hashmap)，所以说ThreadLocal实际上是让Thread类自身来存储共享变量的副本，并对副本做操作从而达到互不影响的效果**
