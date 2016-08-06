@@ -143,6 +143,6 @@ There are two main uses for a Handler: (1) to schedule messages and runnables to
 
 **四、总结**
 
-从上面的分析可以知道Handler的工作有Handler、Looper、MessageQueue、Message构成，其中Handler用于消息的处理、Looper是一个调度者，它在一个死循环中不断的从MessageQueue中获取消息，而MessageQueen用于存储消息来解耦，最后Message是消息的载体。最后要提的是我认为使用Message的Obtain方法更高效，比较省。
+从上面的分析可以知道Handler的工作有Handler、Looper、MessageQueue、Message构成，其中Handler用于消息的处理、Looper是一个调度者，它在一个死循环中不断的从MessageQueue中获取消息，而MessageQueen用于存储消息来解耦，Message是消息的载体。其次要提的是我认为使用Message的Obtain方法更高效，比较省。最后从上面的分析可以看到在Hanlder的流程中,存在一个MessageQueue->Message->Handler的引用，这也就是在主线程中使用Handler时，如果消息还未被处理完，则可能会导致内存泄漏，知道消息处理完之后才可能被释放
 
     
