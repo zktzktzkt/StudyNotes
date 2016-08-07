@@ -75,7 +75,7 @@ There are two main uses for a Handler: (1) to schedule messages and runnables to
     }
 ```
 
-可以看到首先利用MessageQueue的next方法来获取一个Messaage对象，然后获取msg对应的Handler即target对象，分发消息到Handler中，最后回收消息，所以已经用过的Message对象不能再用。**所以这里的逻辑就是获取消息、处理消息、回收对象**
+可以看到首先利用MessageQueue的next方法来获取一个Messaage对象，然后获取msg对应的Handler即target对象(那么就是说虽然一个线程只能有一个Looper，用ThreadLocal保证的,但是一个Looper可以为多个Handler服务)，分发消息到Handler中，最后回收消息，所以已经用过的Message对象不能再用。**所以这里的逻辑就是获取消息、处理消息、回收对象**
 
 接下来再看Message的target对象即Handler对象怎么绑定的，从Message类的部分Obtain方法中看以看到在其中有对Handler赋值，但是如果没有使用这类方法来创建Message对象呢？那可能从哪赋值呢，从另一点看消息是用Handler对象发送的，这里有Handler的引用又有Message的引用，那么可以猜想这里也有可能绑定Handler，发送消息最终调用了如下方法来将消息插入队列
 
