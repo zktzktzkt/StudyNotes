@@ -120,7 +120,7 @@ bottom和top字段的意思也可如此实验，最后leading是推荐的两行�
     }
 
 ```
-效果如下，其中蓝色是自己绘制的，黑色味TextView绘制的，可以看出来，完全一致，并且重合了两行
+效果如下，其中蓝色是自己绘制的，黑色为TextView绘制的，通过对照可以看出来，完全一致，并且重合了两行
 
 ![](https://github.com/getletCodes/AndroidNotes/blob/master/part1/font_draw_demo.png)
 
