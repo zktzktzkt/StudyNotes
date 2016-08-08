@@ -30,7 +30,7 @@ paint	The paint used for the text (e.g. color, size, style)
         canvas.drawText(mText1,0,0,mTextPaint);
     }
 ```
-结果如下，可以模糊的看到只有一点点被绘制出来，就是baseline一下的部分
+结果就是模糊的看到只有一点点被绘制出来，就是baseline以下的部分
 
 接下来再看Paint类下测量字符串的几个API获取的字段的值
 
