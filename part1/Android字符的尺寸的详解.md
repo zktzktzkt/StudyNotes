@@ -9,7 +9,7 @@ public void drawText (String text, int start, int end, float x, float y, Paint p
 ```
 从方法声明来看，与其他绘制方法没什么差别，都是数据、位置、画笔，而且一般来说x,y都是绘制的左上角位置，但是这里的x,y却是baseline的位置，即绘制的基准点是一个字符的baseline，文档如下
 
->>>Parameters
+>Parameters
 text	The text to be drawn
 x	The x-coordinate of the origin of the text being drawn
 y	The y-coordinate of the baseline of the text being drawn
@@ -18,7 +18,7 @@ paint	The paint used for the text (e.g. color, size, style)
 #二、关于测量字符时的几个字段的解释#
 先上一张图
 
-![](https://github.com/getletCodes/AndroidNotes/tree/master/part1/font_metrics.png)
+![](https://github.com/getletCodes/AndroidNotes/blob/master/part1/font_metrics.png)
 
 然后从绘制看起，先用这样的代码绘制一段text
 
@@ -70,7 +70,7 @@ paint	The paint used for the text (e.g. color, size, style)
 ```
 log的截图如下,Paint的ascent、descent只是一个快捷方法和FontMetrics中的值相同。然后根据图示的来实验一下各个参数是否是正确的意思
 
-![](https://github.com/getletCodes/AndroidNotes/tree/master/part1/font_draw_log.png)
+![](https://github.com/getletCodes/AndroidNotes/blob/master/part1/font_draw_log.png)
 
 ```
 	//修改一下y坐标为ascent值，果然文字就全部绘制出来了
