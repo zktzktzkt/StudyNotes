@@ -36,7 +36,7 @@ volley是一个http库，它能够让android app的网络访问更加简单、�
 
 ##五、发送基本的请求##
 
-根据返回的内容的差异有三种标准的请求实现：*StringRequest*、*2、ImageRequest*、*JsonObjectRequest、JsonArrayRequest*
+根据返回的内容的差异有三种标准的请求实现：*StringRequest*、*ImageRequest*、*JsonObjectRequest、JsonArrayRequest*
 
 **特别的关于图片的请求Volley提供了一下几个类**
 
@@ -44,7 +44,7 @@ ImageRequest-可以根据指定的URL来获取图片的请求类，而且它还�
 
 ImageLoader-一个用来加载和缓存图片的帮助类，它相当于大量的ImageRequest的集合，比如加载ListView的缩略图。并且它在Volley的标准缓存之上提供了一个内存缓存。同时ImageLoader会做响应合并，比如每个响应向同一个View设置bitmap(*应该没翻译错吧*)
 
-NetworkImageView—建立于ImageLoader之上用于在利用url来设置图片的情况下替代ImageView,当它从View树中分离时会取消请求。
+NetworkImageView-建立于ImageLoader之上用于在利用url来设置图片的情况下替代ImageView,当它从View树中分离时会取消请求。
 
 
 ```
