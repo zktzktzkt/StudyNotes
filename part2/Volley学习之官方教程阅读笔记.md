@@ -1,23 +1,23 @@
-##Android Tranning中volley教程阅读笔记##
+#Android Tranning中volley教程阅读笔记#
 ---
 
-#一、Volley是什么#
+##一、Volley是什么##
 
 volley是一个http库，它能够让android app的网络访问更加简单、快速
 
-#二、Volley的优点和缺点#
+##二、Volley的优点和缺点##
 
-*网络请求的自动调度
-*多个并发的网络连接
-*磁盘和内存级的标准Http缓存
-*支持设置请求的优先级
-*提供撤销请求的API
-*可以很方便的进行定制
-*确保能够简单、正确的将异步网络数据填充到UI中
-*提供调试和追踪工具
-*由于Volley在解析时会将数据全部存储在内存中，所以它不适合下载、处理流数据，可以利用DownloadManager来完成
++ 网络请求的自动调度
++ 多个并发的网络连接
++ 磁盘和内存级的标准Http缓存
++ 支持设置请求的优先级
++ 提供撤销请求的API
++ 可以很方便的进行定制
++ 确保能够简单、正确的将异步网络数据填充到UI中
++ 提供调试和追踪工具
++ 由于Volley在解析时会将数据全部存储在内存中，所以它不适合下载、处理流数据，可以利用DownloadManager来完成
 
-#三、发送一个简单的请求#
+##三、发送一个简单的请求##
 
 简单来说使用volley发送网络请求就是建立RequestQueue，然后将Request对象传给它即可。其中RequestQueue是用来管理工作线程，发送请求、读写缓存、解析数据等耗时任务都在这里进行，而且RequestQuene保证将解析的响应结果返回到主线程。
 
@@ -27,14 +27,14 @@ volley是一个http库，它能够让android app的网络访问更加简单、�
 
 取消请求可以调用cancel方法，一旦调用，volley保证你的监听回调不会被调用，一般在onStop方法中调用和Activity的生命周期进行联动，此外为了更好的使用这个方法，可以为每个请求加上一个tag，然后可以利用这个tag来取消一个域的请求
 
-#四、配置RequestQueue#
+##四、配置RequestQueue##
 
 如果需要经常使用网络，建议使用了单例来创建RequestQueue，这样就可以在app的整个生命周期中存在。实现一个ReuqestQueue单例一般有两种方法，一是继承Application类在这里创建，一是写一个单独的单例类，文档推荐使用后者，这样更加模块化。其次一个关键的概念是RquestQueue必须通过Application context来创建而不是Activity context，这是为了保证RequestQueue生命周期可以和app一样长，而不会因为Activity的重建而重建
 
 其次RequestQueue需要两件东西来保证正常工作：一个用于请求的网络、一个缓存来处理缓存。这两个在Volley toolbox都有标准实现：DiskBasedCache利用内存索引提供了响应到文件的一对一缓存，BasicNetwork可以根据你的HTTP客户端提供网络传输
 
 
-#五、发送基本的请求#
+##五、发送基本的请求##
 
 根据返回的内容的差异有三种标准的请求实现：*StringRequest*、*2、ImageRequest*、*JsonObjectRequest、JsonArrayRequest*
 
@@ -150,7 +150,7 @@ NetworkImageView—建立于ImageLoader之上用于在利用url来设置图片�
 
 ```
 
-#六、实现一个自定义的Request#
+##六、实现一个自定义的Request##
 
 实现自定义Request的基本要求：继承Request类，实现parseNetworkResponse()、deliverResponse()方法，其中前者的参数包含了HTTP的响应头、状态码的数据。
 
