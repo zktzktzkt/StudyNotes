@@ -59,11 +59,11 @@ Drawable是对于那种可绘制的东西的抽象。
 		
 		android:thicknessRatio：圆环的厚度=圆的宽度/值
 	
-	最后ring需要定义stroke属性定义绘制的宽度与颜色
+	   最后ring需要定义stroke属性定义绘制的宽度与颜色
 
-	corner属性：只对shape为rectangle有效，其下的属性就是指各个直角的弯曲度
+	   corner属性：只对shape为rectangle有效，其下的属性就是指各个直角的弯曲度
 
-	gradient属性:设置形状的渐变色
+	   gradient属性:设置形状的渐变色
 
 		android:angle:颜色渐变的方向,0表示从左到右，90表示从下到上，必须是45的倍数
 
@@ -75,15 +75,15 @@ Drawable是对于那种可绘制的东西的抽象。
 
 		android:type：渐变样式，linear(线性渐变)、radial(辐射式，由中心)、sweep(扫描式)
 
-	padding属性：与想象中不同的时它是作用于View，就像View的padding一样，并不是设置shape的padding
+	   padding属性：与想象中不同的时它是作用于View，就像View的padding一样，并不是设置shape的padding
 
-	size属性：设置大小，在View的布局未warp_content时生效，其他情况拉伸以适合于View
+	   size属性：设置大小，在View的布局未warp_content时生效，其他情况拉伸以适合于View
 
-	solid属性：填充shape的颜色，与gradient存在冲突
+	   solid属性：填充shape的颜色，与gradient存在冲突
 
-	stroke属性：与绘制的线条相关
+	   stroke属性：与绘制的线条相关
 
-		android:dashGap、android:dashWidth:一起使用才有效，虚线之间的距离与一条实线的长度
+	   android:dashGap、android:dashWidth:一起使用才有效，虚线之间的距离与一条实线的长度
 
 4、ShapeDrawable
 	标签意义同上
@@ -160,7 +160,7 @@ Drawable是对于那种可绘制的东西的抽象。
 	    }
 
 	```
-	可以看来android是根据根标签来创建相应的Drawable，而上面对shape标签只会创建GradientDrawable，而不是根据情况创建ShapeDrawable或者只是创建ShapeDrawable，但是文档中只对ShapeDrawable进行了xml创建的说明与解释，不明觉厉。
+	可以看出来android是根据根标签来创建相应的Drawable，而上面对shape标签只会创建GradientDrawable，而不是根据情况创建ShapeDrawable或者只是创建ShapeDrawable，但是文档中只对ShapeDrawable进行了xml创建的说明与解释，不明觉厉。
 
 5、LayerDrawable
 
