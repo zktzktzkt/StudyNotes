@@ -43,11 +43,16 @@ Drawable是对于那种可绘制的东西的抽象。
 首先先从Drawable的部分set方法来看公共的基本属性
 
 1、BitmapDrawable
+
 	android:tileMode启用时android:gravity属性被忽略，另外alpha之从0~255
+
 2、ColorDrawable
+
 	只有一个属性Color值，纯色
+
 3、GradientDrawable
-	android:shape属性(定义形状)：rectangle(填满View的矩形)、oval(适应View尺寸的椭圆)、line(等于View的宽度的直线，需要搭配stroke属性)、ring(圆形)
+
+	android:shape属性(定义形状)：rectangle(填满View的矩形)、oval(适应View尺寸的椭圆)、line(等于View的宽度的中心直线，需要搭配stroke属性)、ring(圆形)
 
 	只与ring标签使用的属性
 
@@ -59,11 +64,11 @@ Drawable是对于那种可绘制的东西的抽象。
 		
 		android:thicknessRatio：圆环的厚度=圆的宽度/值
 	
-	   最后ring需要定义stroke属性定义绘制的宽度与颜色
+	    最后ring需要定义stroke属性定义绘制的宽度与颜色
 
-	   corner属性：只对shape为rectangle有效，其下的属性就是指各个直角的弯曲度
+	    corner属性：只对shape为rectangle有效，其下的属性就是指各个直角的弯曲度
 
-	   gradient属性:设置形状的渐变色
+	    gradient属性:设置形状的渐变色
 
 		android:angle:颜色渐变的方向,0表示从左到右，90表示从下到上，必须是45的倍数
 
