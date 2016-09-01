@@ -116,6 +116,6 @@ WebView本身是继承自AbsoluteLayout一般用于加载HTML文档或者一个�
 
 对于更高版本则可以通过chrome浏览器来进行调试，参考链接
 
-![](https://developers.google.com/web/tools/chrome-devtools/debug/remote-debugging/remote-debugging?utm_source=dcc&utm_medium=redirect&utm_campaign=2016q3)
+[调试参考](https://developers.google.com/web/tools/chrome-devtools/debug/remote-debugging/remote-debugging?utm_source=dcc&utm_medium=redirect&utm_campaign=2016q3)
 
 最后对于CSS/HTML的尺寸信息低版本的为屏幕实际尺寸，而高版本的则是CSS的尺寸单位
