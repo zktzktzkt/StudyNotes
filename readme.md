@@ -8,6 +8,7 @@
 * [关于LayoutInflater以及Fragment生命周期的学习](https://github.com/getletCodes/StudyNotes/blob/master/part1/关于LayoutInflater以及Fragment生命周期的学习.md)
 * [ContentProvider文档阅读笔记](https://github.com/getletCodes/StudyNotes/blob/master/part1/ContentProvider文档阅读笔记.md)
 * [WebView文档阅读笔记](https://github.com/getletCodes/StudyNotes/blob/master/part1/WebView文档阅读笔记.md)
+* [ViewPager预加载机制探究](https://github.com/getletCodes/StudyNotes/blob/master/part1/ViewPager预加载机制探究.md)
 
 #Part2
 * [Volley学习-官方教程阅读笔记](https://github.com/getletCodes/StudyNotes/blob/master/part2/Volley学习之官方教程阅读笔记.md)
