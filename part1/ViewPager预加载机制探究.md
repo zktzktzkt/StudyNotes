@@ -5,7 +5,7 @@
 
 * ViewPager:继承自viewGroup,该布局允许用户向左右滑动数据页
 * PagerAdapter:该抽象类是ViewPager的适配器类，用于向ViewPager提供数据的内容UI，标题，直接子类为FragmentPagerAdapter、FragmentStatePagerAdapter
-*PagerTitleStrip、PagerTabStrip:可以用于为ViewPager提供标题UI，而标题数据由Adapter提供，其中前者是后者的父类，其中他们在attachActivity时绑定父ViewGroup即ViewPager，并设置监听来获取标题信息
+* PagerTitleStrip、PagerTabStrip:可以用于为ViewPager提供标题UI，而标题数据由Adapter提供，其中前者是后者的父类，其中他们在attachActivity时绑定父ViewGroup即ViewPager，并设置监听来获取标题信息
 
 一个原始的例子如下
 ```
@@ -191,7 +191,7 @@
 
 	```
 
-	**从上面两个方法来看,ViewPager会强制每个page item充满自身，而且强制每个page item的尺寸相同，如果我们能够在外部提供每个子page View的尺寸信息，我们仍然可以通过在外部使用ViewPager的LayoutParams变量来动态的让ViewPager来自适应子Pager 的尺寸。此外ViewPager中存在一个sortChildDrawingOrder()方法，ViewPager会根据每个item是否为decor view、距离的远近的来决定绘制顺序，通过覆写了ViewGroup的getChildDrawingOrder方法**
+	**从上面两个方法来看,ViewPager会强制每个page item充满自身，而且强制每个page item的尺寸相同，但是如果我们能够在外部提供每个子page View的尺寸信息，我们仍然可以通过在外部使用ViewPager的LayoutParams变量来动态的让ViewPager来自适应子Pager 的尺寸。此外ViewPager中存在一个sortChildDrawingOrder()方法，ViewPager会根据每个item是否为decor view、距离的远近的来决定绘制顺序，通过覆写了ViewGroup的getChildDrawingOrder方法**
 
 * 从ViewPager的setAdapter开始分析加载UI的机制:
 
@@ -340,7 +340,7 @@
 
 	**从上面的分析中我们就可以对ViewPager的预加载机制有一个了解，ViewPager会默认加载当前显示的Item以及预加载其左右的item，但是一个重要的问题就是，它在预加载时使用了两个参数一个是item的宽度比(或者说是宽度)、一个是mOffscreenPageLimit参数，但是我们仍然无法通过将后者设置为0来避免预加载机制，因为ViewPager只有在前者的数值到达预定目标才会去比较接下来的item的position是否已经超过了mOffscreenPageLimit，此外由宽度比这个参数的比较对象在populate方法中是一个局部变量，所以我们无法通过继承来修改预加载机制，所以只能从Fragment入手来做或者自定义ViewPager重写populate方法重新设置改逻辑**
 
-	接着从onTouchEvent方法来看，populate(填充UI数据)、setCurrentItemInternal(设置当前page)是ViewPager的核心方法，尤其是前者ViewPager严重依赖于这个方法
+	接着从onTouchEvent方法来看，populate(填充UI数据)、setCurrentItemInternal(设置当前page)是ViewPager的核心方法，尤其是前者，ViewPager严重依赖于这个方法
 
 * ViewPager与FragmentStatePagerAdapter的回收缓存机制
 
