@@ -422,3 +422,129 @@
 
 	```
 
+##四、ViewPager自定义切换动画##
+
+ViewPager提供了ViewPager.PageTransformer接口用于自定义动画的实现，该接口只有一个方法如下
+
+```
+
+//第一个参数表示当前动画操作的对象，第二个是一个关于位置信息的值范围为[-1,1],
+//标识当前page位于屏幕的相对位置，正中间时为0
+void transformPage (View page, float position)
+
+```
+
+再看这个接口是如何回调的
+
+```
+	//在ViewPager的onPageScrolled方法里面有一段这样的代码，可以了解的是每一个child都会被回调该方法
+	if (mPageTransformer != null) {
+            final int scrollX = getScrollX();
+            final int childCount = getChildCount();
+            for (int i = 0; i < childCount; i++) {
+                final View child = getChildAt(i);
+                final LayoutParams lp = (LayoutParams) child.getLayoutParams();
+                if (lp.isDecor) continue;
+                final float transformPos = (float) (child.getLeft() - scrollX) / getClientWidth();
+                mPageTransformer.transformPage(child, transformPos);
+            }
+        }
+
+```
+
+接着看两个官方提供的例子
+
+```
+	//这个是一个具有缩放效果的例子
+	public class ZoomOutPageTransformer implements ViewPager.PageTransformer {
+	    private static final float MIN_SCALE = 0.85f;
+	    private static final float MIN_ALPHA = 0.5f;
+
+	    public void transformPage(View view, float position) {
+	        int pageWidth = view.getWidth();
+	        int pageHeight = view.getHeight();
+
+	        if (position < -1) {//不显示页面的不做过多操作
+	            view.setAlpha(0);
+
+	        } else if (position <= 1) { // 正在显示的
+	        	//根据位置比计算缩放系数，可见位于正中间的缩放系数为1，即不缩放
+	            float scaleFactor = Math.max(MIN_SCALE, 1 - Math.abs(position));
+	            float vertMargin = pageHeight * (1 - scaleFactor) / 2;
+	            float horzMargin = pageWidth * (1 - scaleFactor) / 2;
+	            if (position < 0) {//根据当前的位置来决定留白方向
+	                view.setTranslationX(horzMargin - vertMargin / 2);
+	            } else {
+	                view.setTranslationX(-horzMargin + vertMargin / 2);
+	            }
+
+	            // 设置缩放系数
+	            view.setScaleX(scaleFactor);
+	            view.setScaleY(scaleFactor);
+
+	            // 设置透明度，位于中间时不透名，位于两边时透明度为MIN_ALPHA
+	            view.setAlpha(MIN_ALPHA +(scaleFactor - MIN_SCALE) /(1 - MIN_SCALE) * (1 - MIN_ALPHA));
+
+	        } else { //不显示页面的不做过多操作
+	            view.setAlpha(0);
+	        }
+	    }
+	}
+
+	//这是一个具有看起来具有深度信息的切换效果的例子，通过实际的运行观察可以发现的是实际上
+	//这种效果对于左边的page是默认的，是只对右边page的进行了缩放，其他的执行的是默认动画
+	public class DepthPageTransformer implements ViewPager.PageTransformer {
+    private static final float MIN_SCALE = 0.75f;
+
+    public void transformPage(View view, float position) {
+        int pageWidth = view.getWidth();
+        if (position < -1) { //不需要过多处理
+            view.setAlpha(0);
+
+        } else if (position <= 0) { //位于左边的page直接做默认操作即可，或者是恢复正常状态
+            view.setAlpha(1);
+            view.setTranslationX(0);
+            view.setScaleX(1);
+            view.setScaleY(1);
+
+        } else if (position <= 1) { 
+            view.setAlpha(1 - position);
+            view.setTranslationX(pageWidth * -position);//消除默认动画的移动效果
+            float scaleFactor = MIN_SCALE
+                    + (1 - MIN_SCALE) * (1 - Math.abs(position));
+            view.setScaleX(scaleFactor);
+            view.setScaleY(scaleFactor);
+        } else {//不需要过多处理
+            view.setAlpha(0);
+        }
+    }
+}
+
+```
+
+最后是一个demo，模仿这写出一个旋转进入的效果如下
+
+```
+
+	public class RotatePageTransformer implements ViewPager.PageTransformer {
+	    private static final float MIN_ALPHA = 0.5f;
+	    private static final float MIN_SCALE = 0.85f;
+
+	    @Override
+	    public void transformPage(View page, float position) {
+	        if (position < -1 || position > 1) {
+	            page.setAlpha(0);
+	        } else {
+	            float scaleFactor = Math.max(MIN_SCALE, 1 - Math.abs(position));
+	            float rotateX = position * 90;
+	            rotateX = position < 0 ? -rotateX : rotateX;
+	            page.setScaleX(scaleFactor);
+	            page.setScaleY(scaleFactor);
+	            page.setRotation(rotateX);
+	            page.setAlpha(MIN_ALPHA + (scaleFactor - MIN_SCALE) /(1 - MIN_SCALE) * (1 - MIN_ALPHA));
+
+	        }
+	    }
+	}
+
+```
