@@ -226,3 +226,7 @@
     }
 
 	```
+
+最后提一下提一下Picasso实施transformation的时机是在BitmapHunter的hunt方法中，及下载完成之后，回调到主线程之前，以及Picasso自身配有Stats类用于统计图片加载相关的数据(缓存大小之类的)。
+
+本次分析基于最新的Picasso2.5.
