@@ -17,6 +17,10 @@
 * [Volley学习-实现分析二](https://github.com/getletCodes/StudyNotes/blob/master/part2/Volley学习-实现分析二.md)
 * [Volley学习-实现分析三](https://github.com/getletCodes/StudyNotes/blob/master/part2/Volley学习-实现分析三.md)
 * [Volley学习-实现分析四](https://github.com/getletCodes/StudyNotes/blob/master/part2/Volley学习-实现分析四.md)
+* [Picasso的使用与实现分析一](https://github.com/getletCodes/StudyNotes/blob/master/part2/Picasso的使用与实现分析一.md)
+* [Picasso的使用与实现分析二](https://github.com/getletCodes/StudyNotes/blob/master/part2/Picasso的使用与实现分析二.md)
+* [Picasso的使用与实现分析三](https://github.com/getletCodes/StudyNotes/blob/master/part2/Picasso的使用与实现分析三.md)
+
 
 #Part3
 * [HTML与CSS拾遗-简单回顾](https://github.com/getletCodes/StudyNotes/blob/master/part3/HTML与CSS拾遗.md)
