@@ -28,11 +28,11 @@
 	```
 
 	所以它们之间对于请求的描述是一个递进的关系
-	* Target类：
+	* Target接口：请求加载事件过程的监听
 	* BitmapHunter：该类是下载任务的核心管理类，也是Picasso线程池的实际的任务封装了类(实现了Runnable接口)，它封装了任务下载、解析图像流、任务回送UI的逻辑
 	* RequestHandler类：图片下载任务的处理类，该类是图片加载任务处理过程的抽像，使得Picasso扩展加载不同资源的能够友好的扩展，它的的具体实现类NetworkRequestHandler、FileRequestHandler等分别拥有处理网络图片的加载、本地文件加载的能力
 	* Downloader接口：下载图片的行为的抽象，UrlConnectionDownloader其的一个实现该类利用HTTPUrlConnection实现了图片的下载以及**磁盘缓存**
-	*Cache接口：Picasso内存缓存的行为标准，LruCache为实现类
+	* Cache接口：Picasso内存缓存的行为标准，LruCache为实现类
 	* Dispatcher类：该类的作用如其名-**Picasso的事件分发的核心类**,它的作用就是一个中转站，利用Handler的消息机制实现了关于请求的发送、请求的暂停、请求的完成等等一系列消息的处理
 
 * 缓存逻辑总结：我们可以知道Picasso本身没有实现任何关于磁盘缓存的逻辑，它的缓存依赖与第三方(okHttp)或者SDK中的HTTPURLConnection的HTTP缓存，对于4.0以上的版本则使用了HTTPResponseCache类来缓存HTTP响应的实体，内存缓存则是利用常见的LruCache来实现,所以Picasso的缓存逻辑还是比较简单
