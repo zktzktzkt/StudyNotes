@@ -10,6 +10,7 @@
 * [WebView文档阅读笔记](https://github.com/getletCodes/StudyNotes/blob/master/part1/WebView文档阅读笔记.md)
 * [ViewPager预加载机制探究](https://github.com/getletCodes/StudyNotes/blob/master/part1/ViewPager预加载机制探究.md)
 * [AsyncTask源码分析](https://github.com/getletCodes/StudyNotes/blob/master/part1/AsyncTask源码分析.md)
+* [正则表达式入门](https://github.com/getletCodes/StudyNotes/blob/master/part1/Java正则表达式入门.md)
 
 #Part2
 * [Volley学习-官方教程阅读笔记](https://github.com/getletCodes/StudyNotes/blob/master/part2/Volley学习之官方教程阅读笔记.md)
