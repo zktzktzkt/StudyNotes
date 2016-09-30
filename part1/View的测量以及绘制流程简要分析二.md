@@ -375,7 +375,7 @@ draw方法开始处的注释对draw的步骤有一个很清楚的描述如下:
 
 ##总结##
 
-View的测量、布局、绘制我觉得最终要的部分就是measur的过程，这个过程一个重要的类就是MeasureSpec，后面的布局过程依赖与它的结果.三个过程的方法调用流程如下
+View的测量、布局、绘制我觉得最重要的部分就是measur的过程，这个过程一个重要的类就是MeasureSpec，后面的布局过程依赖与它的结果.三个过程的方法调用流程如下
 
 measure:performTraversals->(measureHierarchy)->performMeasure->Measure->onMeasure->Measure->onMeasure->......)
 
