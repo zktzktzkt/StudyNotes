@@ -28,35 +28,35 @@ js属于动态语言，变量是无类型的，可以被赋予任何类型的值
 
 ##二、js中函数的一些特殊性质##
 
-	1、函数调用的问题:除了类似于其他语言的调用方式之外，js还提供了**call、apply方式**调用,需要注意的是就是各种方式this的引用
+1、函数调用的问题:除了类似于其他语言的调用方式之外，js还提供了**call、apply方式**调用,需要注意的是就是各种方式this的引用
 
-	```
+```
 
 	function add(p1,p2){
-        console.log("result="+(p1+p2)+"this="+this);
-    }
-    add(1,2);//this绑定到全局对象
-    var math={method:add};
-    math.method(3,4);//this绑定到math
-    var t=new Date();
-    add.apply(t,[1,2,3]);//第一个参数为this,第二个参数为参数数组，this绑定到Date
-    var caller="I am caller";
-    add.call(caller,1,2,3);//与apply功能类似，参数形式不同而已
+       console.log("result="+(p1+p2)+"this="+this);
+   }
+   add(1,2);//this绑定到全局对象
+   var math={method:add};
+   math.method(3,4);//this绑定到math
+   var t=new Date();
+   add.apply(t,[1,2,3]);//第一个参数为this,第二个参数为参数数组，this绑定到Date
+   var caller="I am caller";
+   add.call(caller,1,2,3);//与apply功能类似，参数形式不同而已
 
-	```
+```
 
-	2、函数的参数问题：js中函数调用的语法相当宽泛，我们传入的参数可以比函数声明的参数多，即使函数没有声明参数我们也可以传入参数，额外的参数可以在函数中使用**关键字augments**来获取
+2、函数的参数问题：js中函数调用的语法相当宽泛，我们传入的参数可以比函数声明的参数多，即使函数没有声明参数我们也可以传入参数，额外的参数可以在函数中使用**关键字augments**来获取
 
-	```
+```
 
 	function showAugments(first){
-        for(var i=0;i<arguments.length;i++){
-            console.log(arguments[i]);//打印所有参数
-        }
-    }
-    showAugments(1,2,"hello","params","more");
+	    for(var i=0;i<arguments.length;i++){
+	        console.log(arguments[i]);//打印所有参数
+	    }
+	}
+	showAugments(1,2,"hello","params","more");
 
-	```
+```
 
 ##三、js中的对象##
 
