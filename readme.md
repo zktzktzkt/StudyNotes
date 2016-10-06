@@ -28,3 +28,4 @@
 
 #Part3
 * [HTML与CSS拾遗-简单回顾](https://github.com/getletCodes/StudyNotes/blob/master/part3/HTML与CSS拾遗.md)
+* [js基本语法](https://github.com/getletCodes/StudyNotes/blob/master/part3/JavaScrip基本语法.md)
