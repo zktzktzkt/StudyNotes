@@ -2,7 +2,7 @@
 
 ##一、基本概念##
 
-1、作用：Transitions Framework用于构建跟平滑的视图切换
+1、作用：Transitions Framework用于构建平滑的视图切换动画
 
 2、核心类:
 
