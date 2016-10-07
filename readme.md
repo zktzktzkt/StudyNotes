@@ -14,6 +14,8 @@
 * [View的测量以及绘制流程简要分析一](https://github.com/getletCodes/StudyNotes/blob/master/part1/View的测量以及绘制流程简要分析一.md)
 * [View的测量以及绘制流程简要分析二](https://github.com/getletCodes/StudyNotes/blob/master/part1/View的测量以及绘制流程简要分析二.md)
 * [View触摸事件流程简述](https://github.com/getletCodes/StudyNotes/blob/master/part1/View触摸事件流程简述.md)
+* [Android Transitions Framework入门](https://github.com/getletCodes/StudyNotes/blob/master/part1/Android Transitions Framework入门.md)
+
 
 #Part2
 * [Volley学习-官方教程阅读笔记](https://github.com/getletCodes/StudyNotes/blob/master/part2/Volley学习之官方教程阅读笔记.md)
