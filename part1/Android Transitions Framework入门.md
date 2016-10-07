@@ -166,7 +166,7 @@ layoutId:对应场景的View对象
         intent.putExtra(DetailActivity.EXTRA_ID, index);
         //传递共享元素，主要在于Pair中传的共享View和对应的tag
         ActivityOptionsCompat activityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(this,
-                new Pair<View, String>(findViewById(R.id.imv1),DetailActivity.VIEW_IMAGE));
+                new Pair<View, String>(view,DetailActivity.VIEW_IMAGE));
         //传递数据，跳转Activity
         ActivityCompat.startActivity(this, intent, activityOptions.toBundle());
     }
