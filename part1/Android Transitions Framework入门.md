@@ -225,6 +225,7 @@ layoutId:对应场景的View对象
                 else{
                     mImage.setImageResource(R.mipmap.a2);
                 }
+                transition.removeListener(this);
             }
             //..................
         });
