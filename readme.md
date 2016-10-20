@@ -15,6 +15,8 @@
 * [View的测量以及绘制流程简要分析二](https://github.com/getletCodes/StudyNotes/blob/master/part1/View的测量以及绘制流程简要分析二.md)
 * [View触摸事件流程简述](https://github.com/getletCodes/StudyNotes/blob/master/part1/View触摸事件流程简述.md)
 * [Android Transitions Framework入门](https://github.com/getletCodes/StudyNotes/blob/master/part1/Android Transitions Framework入门.md)
+* [ArrayList实现浅析](https://github.com/getletCodes/StudyNotes/blob/master/part1/java Collection框架分析之ArrayList实现分析.md)
+* [LinkedList实现浅析](https://github.com/getletCodes/StudyNotes/blob/master/part1/java Collection框架分析之LinkedList实现分析.md)
 
 
 #Part2
