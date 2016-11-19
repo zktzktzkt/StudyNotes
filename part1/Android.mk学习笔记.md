@@ -259,31 +259,30 @@ LOCAL_SRC_FILES = foo.c.neon bar.c zoo.c.arm.neon//使用两个后缀时.arm必�
 
 一些默认开启的一些特性
 
-
 ###4、NDK提供的函数宏###
 
 这里解释的是NDK写好的函数宏，可以使用`$(call <function>)`去执行，并返回文本结果
 
 + my-dir
  
- 返回当前最近一次包含的makefile文件的路径，一般是当前makefile的路径
+返回当前最近一次包含的makefile文件的路径，一般是当前makefile的路径
 
- + all-subdir-makefiles
++ all-subdir-makefiles
 
- 返回my-dir返回的路径下的所有的Android.mk
+返回my-dir返回的路径下的所有的Android.mk
 
- + this-makefile
++ this-makefile
 
- 当前makefile的路径
+当前makefile的路径
 
- + parent-makefile
++ parent-makefile
 
- 返回当前makefile的文件包含树的父目录即上一级makefile的包含目录,类似的还有`grand-parent-makefile`
+返回当前makefile的文件包含树的父目录即上一级makefile的包含目录,类似的还有`grand-parent-makefile`
 
- + import-module
++ import-module
 
- 用于根据module name查找和包含另一个module的Android.mk文件
+用于根据module name查找和包含另一个module的Android.mk文件
 
- ```
- $(call import-module,<name>)
- ```
+```
+$(call import-module,<name>)
+```
