@@ -11,9 +11,7 @@ Android.mk文件位于jni文件夹下用于向构建系统提供源码和动态�
 首先一个android.mk必须由定义LOCAL_PATH开始
 
 ```
-
 LOCAL_PATH := $(call my-dir)
-
 ```
 
 这行代码指出源代码开发路径的位置，其中宏函数 `my-dir` 由构建系统定义提供值，返回当前的目录的位置即android.mk的父目录
@@ -21,9 +19,7 @@ LOCAL_PATH := $(call my-dir)
 next step:声明`CLEAR_VARS`变量，该变量的值由系统提供，代码如下
 
 ```
-
 include $(CLEAR_VARS)
-
 ```
 
 `CLEAR_VARS`变量指向一个特殊的gun makefile文件，该文件将指导删除很多`LOCAL_XXX`变量，比如LOCAL_MODULE、LOCAL_SRC_FILES、LOCAL_STATIC_LIBRARIES等等，但是**LOCAL_PATH除外**，因为构建系统解析每个构建控制文件(.mk)时都是使用同一个gun makefile文件且上下文(context)是全局的，即变量是全局变量的，所以当我们描述一个module时必须再次声明该变量
@@ -31,9 +27,7 @@ include $(CLEAR_VARS)
 next step:通过`LOCAL_MODULE`变量定义module name,它定义、存储了你希望构建的module的名字(每个模块的名字必须唯一且不能有空格)
 
 ```
-
 LOCAL_MODULE := hello-jni
-
 ```
 
 构建系统最终加上前缀和后缀成为最终生成的module的名字，比如libhello-jni.so,但是如果module已经有lib前缀开始则不会添加
@@ -41,17 +35,13 @@ LOCAL_MODULE := hello-jni
 next step:枚举源文件(c or c++ file),使用空格分隔单个文件，例如
 
 ```
-
 LOCAL_SRC_FILES := hello.c jni.c
-
 ```
 
 final step:帮助系统绑定everything到一起
 
 ```
-
 include $(BUILD_SHARED_LIBRARY)
-
 ```
 
 `BUILD_SHARED_LIBRARY`变量指向一个gun makefile 脚本用于收集所有我们定义的`LOCAL_XXX`变量的信息(最近的一次include)，该脚本最终决定构建什么，怎么构建
@@ -79,9 +69,7 @@ include $(BUILD_SHARED_LIBRARY)
 该变量指向的脚本几乎会清除所有LOCAL_XXX的定义，一般在定义一个新的module时使用include引入该脚本，语法如下
 
 ```
-
 include $(CLEAR_VARS)
-
 ```
 
 + BUILD_SHARED_LIBRARY
@@ -90,7 +78,6 @@ include $(CLEAR_VARS)
 
 ```
 include $(BUILD_SHARED_LIBRARY)
-
 ```
 
 一般以此构建的动态库的扩展名为.so
@@ -100,9 +87,7 @@ include $(BUILD_SHARED_LIBRARY)
 该变量用于构建静态库，静态库不会被打包但是可以用于生成动态库
 
 ```
-
 include $(BUILD_STATIC_LIBRARY)
-
 ```
 
 一般以此构建的静态库的扩展名为.a
@@ -112,7 +97,6 @@ include $(BUILD_STATIC_LIBRARY)
 可以用包含已经预先编译好的library,
 
 ```
-
 include $(PREBUILT_SHARED_LIBRARY)
 include $(PREBUILT_STATIC_LIBRARY)
 
@@ -122,7 +106,6 @@ include $(CLEAR_VARS)
 LOCAL_MODULE := foo-prebuilt  
 LOCAL_SRC_FILES := libfoo.so //注意这里为so
 include $(PREBUILT_SHARED_LIBRARY)
-
 ```
 
 + TARGET_ARCH
@@ -134,9 +117,7 @@ include $(PREBUILT_SHARED_LIBRARY)
 用于指定构建系统构建目标平台,例如android5.1的API值为22，使用如下
 
 ```
-
 TARGET_PLATFORM := android-22
-
 ```
 
 + TARGET_ARCH_ABI
@@ -156,9 +137,7 @@ TARGET_PLATFORM := android-22
 用法如下
 
 ```
-
 TARGET_ARCH_ABI := arm64-v8a
-
 ```
 
 + TARGET_ABI
@@ -166,9 +145,7 @@ TARGET_ARCH_ABI := arm64-v8a
 目标Android平台的level和ABI的值的合并，一般用于在真机上测试系统镜像是有用，例如让arm-64位的手机运行Android-22
 
 ```
-
 TARGET_ABI := android-22-arm64-v8a
-
 ```
 
 ###3、描述模块的变量###
@@ -186,9 +163,7 @@ TARGET_ABI := android-22-arm64-v8a
 描述当前文件的路径，需要在Android.mk文件的开始处引用,且该变量只需使用一次且不会被`CLEAR_VARS`清除
 
 ```
-
 LOCAL_PATH := $(call my-dir)
-
 ```
 
 + LOCAL_MODULE
@@ -197,9 +172,7 @@ LOCAL_PATH := $(call my-dir)
 扩展名(.so或者.a),例如定义一个名为libfoo.so的库可以如下操作
 
 ```
-
 LOCAL_MODULE := "foo"
-
 ```
 
 + LOCAL_MODULE_FILENAME
@@ -207,9 +180,7 @@ LOCAL_MODULE := "foo"
 另一种定义module name的方法，该方法不会生成lib前缀
 
 ```
-
 LOCAL_MODULE_FILENAME := "libnewfoo"
-
 ```
 
 + LOCAL_SRC_FILES
@@ -221,9 +192,7 @@ LOCAL_MODULE_FILENAME := "libnewfoo"
 该变量用于描述其他非cpp的扩展名的源文件的扩展名
 
 ```
-
 LOCAL_CPP_EXTENSION := .cxx .cpp .cc
-
 ```
 
 + LOCAL_CPP_FEATURES
@@ -232,9 +201,7 @@ LOCAL_CPP_EXTENSION := .cxx .cpp .cc
 变量作用域为单个module，而后者作用于整个工程
 
 ```
-
 LOCAL_CPP_FEATURES := rtti features
-
 ```
 
 + LOCAL_C_INCLUDES
@@ -242,9 +209,7 @@ LOCAL_CPP_FEATURES := rtti features
 指定需要的c、c++文件的相对于NDK root的路径，即添加文件搜索路径
 
 ```
-
 LOCAL_C_INCLUDES := sources/foo 或者 LOCAL_C_INCLUDES := $(LOCAL_PATH)//foo
-
 ````
 
 需要避免LOCAL_CFLAGS or LOCAL_CPPFLAGS之后定义该变量
@@ -275,9 +240,7 @@ module也依赖于这些库
 默认情况下构建的二进制库是16位字长指令，设置该变量可以强制构建为32位字长指令
 
 ```
-
 LOCAL_ARM_MODE := arm
-
 ```
 
 另外也可以在LOCAL_SRC_FILES变量的文件名中加.asm后缀来实现对指定文件编译为32位字长
@@ -289,9 +252,7 @@ LOCAL_ARM_MODE := arm
 标志是否使用NEON的指令集，为armeabi-v7a架构的CPU所使用(并非所有的v7都支持,需要在运行时检查),类似的也可以使用如下方式来设置单个文件
 
 ```
-
 LOCAL_SRC_FILES = foo.c.neon bar.c zoo.c.arm.neon//使用两个后缀时.arm必须在前面
-
 ```
 
 + LOCAL_DISABLE_NO_EXECUTE、LOCAL_DISABLE_RELRO、LOCAL_DISABLE_FORMAT_STRING_CHECKS
@@ -324,7 +285,5 @@ LOCAL_SRC_FILES = foo.c.neon bar.c zoo.c.arm.neon//使用两个后缀时.arm必�
  用于根据module name查找和包含另一个module的Android.mk文件
 
  ```
-
  $(call import-module,<name>)
-
  ```
