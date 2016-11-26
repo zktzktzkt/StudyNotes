@@ -480,4 +480,4 @@ protected void onCreate(@Nullable Bundle savedInstanceState) {
     }
 ```
 
-上面的方法可以看出主要会存Fragment的状态信息、回退栈、View信息之类的关键数据，然后相应的会在onCreate的方法中恢复，所以很多是否如果我们不处理关于Activity的回收恢复的逻辑，当我们使用的Fragment的时候每次只是在Activity中去直接new 一个Fragment很有可能我们的Activity恢复之后会有多个同样的Fragment同时存在的情况,同时由于恢复跳过一些生命周期方法则host attach不到则会出现一些错误
+上面的方法可以看出主要会存Fragment的状态信息、回退栈、View信息之类的关键数据，然后相应的会在onCreate的方法中恢复，所以很多时候如果我们不处理关于Activity的回收恢复的逻辑，当我们使用的Fragment的时候每次只是在Activity中去直接new 一个Fragment很有可能我们的Activity恢复之后会有多个同样的Fragment同时存在的情况,同时由于恢复跳过一些生命周期方法则host attach不到则会出现一些错误
