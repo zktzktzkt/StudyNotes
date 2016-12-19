@@ -31,6 +31,7 @@
 * [Picasso的使用与实现分析一](https://github.com/getletCodes/StudyNotes/blob/master/part2/Picasso的使用与实现分析一.md)
 * [Picasso的使用与实现分析二](https://github.com/getletCodes/StudyNotes/blob/master/part2/Picasso的使用与实现分析二.md)
 * [Picasso的使用与实现分析三](https://github.com/getletCodes/StudyNotes/blob/master/part2/Picasso的使用与实现分析三.md)
+* [Gradle学习总结](https://github.com/getletCodes/StudyNotes/blob/master/part2/Gradle学习总结.md)
 
 
 #Part3
