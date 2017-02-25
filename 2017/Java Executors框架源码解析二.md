@@ -139,6 +139,7 @@ public class ScheduledThreadPoolExecutor extends ThreadPoolExecutor implements S
 5、Task的封装
 
 从上面任务提交的方法来看我们通过各种方法提交的任务都被包装为ScheduledFutureTask类型，ScheduledFutureTask类型的继承图如下
+
 ![](https://github.com/stdnull/StudyNotes/blob/master/2017/picture/schedule_task_class.png)
 
 依次查看ScheduledFutureTask继承的类、实现的接口的文档说明，例如Delayed接口继承了Comparable接口用于比较延迟时间,主要方法用于计算当前Task剩余的delay时间，最终可以得到的结论ScheduledFutureTask是一种可取消的、可定时处理的的一种Future和Runable混合型任务对象。
