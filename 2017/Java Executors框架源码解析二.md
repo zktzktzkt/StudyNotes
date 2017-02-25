@@ -411,3 +411,31 @@ poll重载系列方法，只分析带有等待机制的poll(long timeout, TimeUn
 
 ####2.2.3 ScheduledExecutorService实现方式总结
 由上分析可见第二类线程池的实现的核心是小端堆的实现，其他的逻辑基本与ThreadPoolExecutor类似，只是线程开启的要更为严格，不会超过corePoolSize.
+
+
+###2.3 第三类方法相关源码解析
+
+####2.3.1 不可定制的线程池，构造方法如下
+
+1、unconfigurableExecutorService(ExecutorService executor)
+
+```
+
+    public static ExecutorService unconfigurableExecutorService(ExecutorService executor) {
+        if (executor == null)
+            throw new NullPointerException();
+        return new DelegatedExecutorService(executor);
+    }
+```
+
+2、unconfigurableScheduledExecutorService(ScheduledExecutorService executor) 
+
+```
+    public static ScheduledExecutorService unconfigurableScheduledExecutorService(ScheduledExecutorService executor) {
+        if (executor == null)
+            throw new NullPointerException();
+        return new DelegatedScheduledExecutorService(executor);
+    }
+```
+
+从构造方法中可以清晰的看出不可定制的线程池是通过代理的方式去除了Executor的相关set方法来实现，此外第四类方法、第五类方法与第三类方法都较为简单，在此不再赘述，至此Executors类提供的服务基本分析结束(除了ForkJoin框架)对于线程池的一些知识点有了进一步的认识。
