@@ -15,12 +15,11 @@ ProGuard是一种***java .class***处理器，包括以下下四个功能
 + seeds.txt：列出未进行混淆的类和成员。
 + usage.txt：列出从 APK 移除的代码。
 
-##2.Proguard in Android
-这节主要描述当我们在gradle中打开minifyEnable的配置项时，Proguard会混淆哪些东西、哪些东西不会混淆
+此外需要注意的是在Android中Proguard只会混淆代码，而不会混淆资源文件的名字
 
-##3.Proguard 常用指令
+##2.Proguard 常用指令
 
-###3.1 keep options
+###2.1 keep options
 
 + -keep [,modifier,...] class_specification：保留指定的类以及其成员、方法不需要混淆，作为一种入口类
 
@@ -32,8 +31,8 @@ ProGuard是一种***java .class***处理器，包括以下下四个功能
 
 + -printseeds [filename]：将keep指令匹配的类以及成员的信息输出到指定文件
 
-###3.2 信息补充
-####3.2.1 modifier修饰符包括以下几种
+###2.2 信息补充
+####2.2.1 modifier修饰符包括以下几种
 + includedescriptorclasses：该修饰符用于确保被keep的类的方法的参数和返回值不会被混淆，文档中提到这在处理native方法时比较有效例如
 
 ```
@@ -49,7 +48,7 @@ ProGuard是一种***java .class***处理器，包括以下下四个功能
 
 + allowobfuscation：允许被保留的类被混淆，通过一个简单的实验可知这个修饰会让keep命令失效，导致类被混淆，岂不是矛盾！
 
-####3.2.2 class_specification格式
+####2.2.2 class_specification格式
 
 class_specification的声明的通用模板与java风格类似，并增加了一些统配符来增强功能
 
@@ -57,16 +56,21 @@ class_specification的声明的通用模板与java风格类似，并增加了一
 [@annotationtype] [[!]public|final|abstract|@ ...] [!]interface|class|enum classname
     [extends|implements [@annotationtype] classname]
 [{
-    [@annotationtype] [[!]public|private|protected|static|volatile|transient ...] <fields> |
+    [@annotationtype] [[!]public|private|protected|static|volatile|transient ...] 
+                                                                      <fields> |
                                                                       (fieldtype fieldname);
-    [@annotationtype] [[!]public|private|protected|static|synchronized|native|abstract|strictfp ...] <methods> |
-                                                                                           <init>(argumenttype,...) |
-                                                                                           classname(argumenttype,...) |
-                                                                                           (returntype methodname(argumenttype,...));
+
+    [@annotationtype] [[!]public|private|protected|static|synchronized|native|abstract|strictfp ...] 
+                                                                      <methods> |
+                                                                      <init>(argumenttype,...) |
+                                                                      classname(argumenttype,...) |
+                                                                      (returntype methodname(argumenttype,...));
+
     [@annotationtype] [[!]public|private|protected|static ... ] *;
     ...
 }]
 ```
+
 #####细节如下
 
 + 基本符号：[]:表示内容可选，| ：表示或的关系 ，():表示括号内的内容为一组，! :表示取反
@@ -118,13 +122,13 @@ class_specification的声明的通用模板与java风格类似，并增加了一
 "** get*()" matches "java.lang.Object getObject()", but not "float getFloat()", nor "java.lang.Object[] getObjects()".
 ```
 
-###3.2 Shrinking options
+###2.2 Shrinking options
 
 + -dontshrink 取消压缩操作
 
 + -printusage [filename] 将压缩了的代码信息输出到指定类
 
-###3.3 Optimization options
+###2.3 Optimization options
 
 + -dontoptimize 取消优化
 
@@ -134,7 +138,7 @@ class_specification的声明的通用模板与java风格类似，并增加了一
 
 + -mergeinterfacesaggressively 是否允许Proguard需要时将接口进行合并
 
-###3.4 Obfuscation options
+###2.4 Obfuscation options
 +  -dontobfuscate 取消混淆操作
 
 + -printmapping [filename] 输出混淆的匹配信息到指定文件
@@ -144,10 +148,10 @@ class_specification的声明的通用模板与java风格类似，并增加了一
 + -keeppackagenames [package_filter] 不混淆指定的包名
 
 
-###3.5 Preverification options
+###2.5 Preverification options
 +  -dontpreverify 关闭预校验，对于Android来说可以减少处理时间
 
-###3.6 General options
+###2.6 General options
 
 +  -verbose 指定Proguard在处理时输出更多信息，比如出现异常时输出整个错误路径
 
