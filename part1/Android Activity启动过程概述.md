@@ -1,6 +1,6 @@
-#Android Activity启动过程概述#
+# Android Activity启动过程概述#
 ---
-##一、相关类##
+## 一、相关类##
 + Instrumentation类
 + ActivityManagerService类
 + ActivityThread类
@@ -8,7 +8,7 @@
 + ActivityStack
 + 以及各种Record类等等
 
-##二、启动流程##
+## 二、启动流程##
 
 从LauncherActivity开始即从桌面点击应用图标开始时系统是如何开启我们应用的Activity
 
@@ -370,6 +370,7 @@ Step 7
         intent = new Intent(intent);
 
         // 搜索要启动的组件中的信息，对应清单文件中的activity标签中
+        //可能出现Activity标签未配置情况，从而抛出异常，这也就为什么Activity需要
         ActivityInfo aInfo = resolveActivity(intent, resolvedType, startFlags, profilerInfo, userId);
         ActivityContainer container = (ActivityContainer)iContainer;//默认为空
         synchronized (mService) {
@@ -520,7 +521,7 @@ Step 8
         }
 
         if (err == ActivityManager.START_SUCCESS && aInfo == null) {
-            // 找不到相应的类
+            // 找不到相应的类, 即此处为Manifest未声明Activity错误的根源
             err = ActivityManager.START_CLASS_NOT_FOUND;
         }
 
@@ -2006,7 +2007,7 @@ Step 18
 
 ```
 	/**
-	*ActivityManagerService$H.java
+	*ActivtyThread$H.java
 	**/
 	case LAUNCH_ACTIVITY: 
 	{
@@ -2023,7 +2024,7 @@ Step 19
 
 ```
 	/**
-	*ActivityManagerService.java
+	*ActivityThread.java
 	**/
 	private void handleLaunchActivity(ActivityClientRecord r, Intent customIntent) {
         unscheduleGcIdler();
@@ -2094,7 +2095,7 @@ Step 20
 
 ```
 	/**
-	*ActivityManagerService.java
+	*ActivityThread.java
 	**/
 	private Activity performLaunchActivity(ActivityClientRecord r, Intent customIntent) {
         ActivityInfo aInfo = r.activityInfo;
@@ -2226,6 +2227,16 @@ Step 20
         return activity;
     }
 ```
+
+## 三、总结
+
+由于开始看DroidPlugin框架相关的源码，所以这里也根据上述过程画了一个简单调用流程图，如下
+
+![](https://github.com/stdnull/StudyNotes/blob/master/part1/picture/start_activity_call_part1.png)
+![](https://github.com/stdnull/StudyNotes/blob/master/part1/picture/start_activity_call_part2.png)
+所以总的看来，整个调用过程为Activity类将调用请求到->ActivityManagerService->ActivityStackSupervior/ActivityStack进行Activity校验和活动栈的处理->ActivityThread尽心Activity的创建、生命周期的调用。
+
+此外参考![这篇博客](http://weishu.me/2016/01/28/understand-plugin-framework-proxy-hook/)进行Hook时,发现他只是hook ActivityThread中的mInstrument,明明与Activity调用逻辑不同，但是最后hook是成功的，一时不解，但是通过上述源码的调用过程会发现，*Activity中的mInstrument变量实质上是ActivityThread 在performLaunchActivity方法中创建Activity时将自己的mInstrument attch给Actvity的*
 
 洋洋洒洒贴了2000行左右的Android源代码和刚开始想象的结果出入还是蛮大的，限于水平，Activity的启动过程很多细节都看不懂，只能去看对于的变量的实例究竟是哪一个(SourceInsight帮了忙，否则基本的函数调用流程都搞不清)，草草的走一个流程。看完的感觉就是Activity的启动周期设计到的类实在有点多，而且很多逻辑都有点复杂而且还有重合的地方，还有Android的这部分的源代码有的地方写的实在不懂为什么这么写，感觉写的很混乱。此外看过之后系统中的一些过于性能的统计类真的是蛮多的，有的都没想到竟然会统计。
 2016已然要结束，希望2017能够进一步学习到Android中更系统一点的东西。
