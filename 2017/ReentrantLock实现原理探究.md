@@ -1,5 +1,5 @@
-#ReentrantLock实现原理探究
-##1、ReentrantLock介绍
+# ReentrantLock实现原理探究
+## 1、ReentrantLock介绍
 >A reentrant mutual exclusion Lock with the same basic behavior and semantics as the implicit monitor lock accessed using synchronized methods and statements, but with extended capabilities.
 
 简单的说ReentrantLock是一种扩展的synchronized可重入互斥锁。主要有一下几个特性
@@ -9,14 +9,14 @@
 + 如其他内置锁表现相同，反序列化的对象总是非锁定的
 + 支持同一线程最大数为2147483647的递归获取锁
 
-##2、Sync继承结构
+## 2、Sync继承结构
 由于ReentrantLock内部方法执行时基本上都将调用Sync的相应方法去完成，即使用Sync类来作为基础的锁的同步控制，所以Sync是ReentrantLock的核心对象。所以先简单看下Sync类的结构，如下图
 
 ![](https://github.com/stdnull/StudyNotes/blob/master/2017/picture/sync_class.png)
 
-##3、基本方法分析
+## 3、基本方法分析
 
-###3.1 构造方法
+### 3.1 构造方法
 ```
 	public ReentrantLock() {
         sync = new NonfairSync();//Sync的子类
@@ -28,7 +28,7 @@
 
 默认的构造方法是非同步锁(文档指出这样的效率相对更加高),同时也可根据参数来创建公平锁。
 
-###3.2 lock方法
+### 3.2 lock方法
 ```
 	//非公平锁的lock方法
 	final void lock() {
@@ -82,7 +82,7 @@
 
 至此可见tryAcquire和平常我们的逻辑处理基本类似-首先检查状态、然后赋值、返回结果。此外可以看出Sync的状态同步依靠的是CAS机制来保证线程并发时状态更新的一致性。在看下一步addWaiter方法以及acquireQueued方法之前，先简单介绍一下Node类
 
-####Node类
+#### Node类
 由文档介绍可知Node类为锁请求等待队列的数据结构(***链表***)的实现，其中等待队列是一种CLH锁(一般用于自旋锁)队列的变形，这里借用了的它的基本机制用于blocking synchronizers.
 
 Node元素中waitStatus几种状态
@@ -252,7 +252,7 @@ Node元素中waitStatus几种状态
 
 5、出现异常、将等待节点摘链，***唤醒最近的后继等待节点***,lock方法结束。但是这里的异常如果不是线程崩溃之类的破坏性异常，lock返回返回，线程岂不是在没有获取到锁的情况下执行了临界区的代码？
 
-###3.3 公平的lock方法
+### 3.3 公平的lock方法
 
 ```
 	final void lock() {
@@ -289,7 +289,7 @@ Node元素中waitStatus几种状态
 
 从tryAcqiure方法逻辑的变化可以看到的是，当有新请求时，不会因为当前锁为空闲状态就立即分配锁的所有权而是首先检查排队队列是否为空，如果存在等待的线程，则无法获取到所有权，只能首先等待进入队列再获取。
 
-###3.4 unlock方法
+### 3.4 unlock方法
 
 ```
 	public void unlock() {
@@ -309,7 +309,7 @@ Node元素中waitStatus几种状态
     }
 ```
 
-###3.5 lockInterruptibly方法
+### 3.5 lockInterruptibly方法
 
 ```
  	public void lockInterruptibly() throws InterruptedException {
@@ -350,7 +350,7 @@ Node元素中waitStatus几种状态
 
 和lock对比起来，lockInterruptibly方法只是将原先lock方法中线程被中断的处理逻辑改为了一旦中断则抛出异常立即退出。
 
-###3.6 tryLock()方法
+### 3.6 tryLock()方法
 
 ```
 	public boolean tryLock() {
@@ -379,7 +379,7 @@ Node元素中waitStatus几种状态
 
 tryLock由上可见，只尝试获取锁一次，不进入等待队列，一旦失败立即返回，相应的tryLock(long timeout, TimeUnit unit)方法则通过LockSupport方法睡眠机制来实现。
 
-###3.7 tryLock(long timeout, TimeUnit unit)方法
+### 3.7 tryLock(long timeout, TimeUnit unit)方法
 
 ```
 	public boolean tryLock(long timeout, TimeUnit unit) throws InterruptedException {
@@ -426,7 +426,7 @@ tryLock由上可见，只尝试获取锁一次，不进入等待队列，一旦�
     }
 ```
 
-##4、总结
+## 4、总结
 
 ReentrantLock核心同步机制主要由CAS机制来保证，同时维护一个等待队列来保存暂时无法获取到锁的线程。而公平锁的机制主要区别为在线程请求锁时，公平锁不论当前锁是否空闲都会检查当前等待队列中是否有等待线程，如果有则直接进入等待不会获取，而每当unlock调用用时，会首先唤醒最先进入等待队列的睡眠线程。此外基础的线程阻塞逻辑由LockSupport来提供。
 
