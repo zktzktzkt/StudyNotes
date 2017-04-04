@@ -1,10 +1,10 @@
-#Java Executors框架源码解析一
+# Java Executors框架源码解析一
 ---
 
-##1、概要
+## 1、概要
 在开发并发程序时，我们可能或多或少都要用到线程池来复用线程以达到较高的性能，但是我们自己写的线程池往往不能达到最大的利用率。考虑到并发的问题，JDK1.5之后引入Executors框架，这样Java中便自带了一个线程池，这边blog也是为了弄清JDK是如何实现线程池，复用线程。
 
-##2、Executors具体作用
+## 2、Executors具体作用
 据文档所描述：Executors是一种工厂类或者工具类，封装了关于 Executor, ExecutorService, ScheduledExecutorService, ThreadFactory, and Callable类的操作。具体提供了一下积累方法
 
 + 用于创建并返回一个使用了通常使用的配置的ExecutorService
@@ -13,7 +13,7 @@
 + 用于创建并返回一个线程工厂，用于创建已知状态的线程
 + 用于创建并返回一个不同于其他闭包样式的Callable，这样便可用于需要Callable的方法中执行
 
-###2.1第一类方法相关源码解析
+### 2.1第一类方法相关源码解析
 2.1.1、ExecutorService是一种提供了处理异步任务方法的类，Executors类中提供了构造方法如下几个
 
 1、newCachedThreadPool(ThreadFactory threadFactory)
@@ -118,8 +118,6 @@ ThreadPoolExecutor中状态切换时机如下
 4、STOP -> TIDYING：在tryTerminate中被设置,当状态为STOP时且队列和线程池为空
 
 5、TIDYING -> TERMINATED：在tryTerminate设置，当TIDYING设置完毕、terminate执行完毕之后
-
-
 
 
 2.1.3 ThreadPoolExecutor的构造参数说明

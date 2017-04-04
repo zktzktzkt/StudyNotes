@@ -1,7 +1,7 @@
-#ViewPager预加载机制探究#
+# ViewPager预加载机制探究
 ---
 
-##一、ViewPager以及相关类的作用##
+## 一、ViewPager以及相关类的作用
 
 * ViewPager:继承自viewGroup,该布局允许用户向左右滑动数据页
 * PagerAdapter:该抽象类是ViewPager的适配器类，用于向ViewPager提供数据的内容UI，标题，直接子类为FragmentPagerAdapter、FragmentStatePagerAdapter
@@ -54,7 +54,7 @@
 
 ![](https://github.com/getletCodes/StudyNotes/blob/master/part1/view_pager_demo.gif)
 
-##二、PagerAdapter中基本方法介绍##
+## 二、PagerAdapter中基本方法介绍
 
 * 实现一个PagerAdapter需要实现的基本方法:
 	* 抽象方法getCount():返回ViewPager数据页的数量
@@ -63,7 +63,7 @@
 	* destroyItem(ViewGroup, int, Object)方法：在此处应将item从容器中移除
 * FragmentPagerAdapter、FragmentStatePagerAdapter的区别:前者一般用于少量页面展示，它会使用FragmentManager持久化每个Fragment，而后者一般用于复杂、数量较多不定的Fragment页面展示，会使用回调机制来做一个页面的回收重建
 
-##三、ViewPager的深入了解##
+## 三、ViewPager的深入了解
 
 * ViewPager的onMeasure、onLayout流程:
 
@@ -422,7 +422,7 @@
 
 	```
 
-##四、ViewPager自定义切换动画##
+## 四、ViewPager自定义切换动画
 
 ViewPager提供了ViewPager.PageTransformer接口用于自定义动画的实现，该接口只有一个方法如下
 

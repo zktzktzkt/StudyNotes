@@ -1,6 +1,6 @@
-#View的测量以及绘制流程简要分析二#
+# View的测量以及绘制流程简要分析二
 ---
-##layout流程分析##
+## layout流程分析
 
 同measure的起点一样,layout的流程也是从ViewRootImpl的performTraversals中调用performLayout开始
 
@@ -199,11 +199,11 @@ layout流程中上面ViewGroup的核心代码就一行直接调用View的layout�
 
 由上面的代码可以知道如果没有Gravity属性的设置，layout的方法将及其简单，就是只需要考虑一些padding值然后调用子View的layout方法让其分配自身空间，或者进一步布局自己的子View的位置
 
-##layout流程总结##
+## layout流程总结
 
 与onMeasure的测量过程相比较，由于measure提供了尺寸信息，layout流程要相对简单一点：一个View在layout方法中确定自身可用空间->在onLayout方法中使用相对坐标确定自己的子View的相对位置，这里的复杂性则依据ViewGroup的复杂性，比如对于规则较简单的FrameLayout的比较简单
 
-##View绘制流程分析##
+## View绘制流程分析
 
 同理由performTraversals中调用的performLayout开始看
 
@@ -362,7 +362,7 @@ layout流程中上面ViewGroup的核心代码就一行直接调用View的layout�
 
 draw方法开始处的注释对draw的步骤有一个很清楚的描述如下:
 
-####Draw traversal performs several drawing steps which must be executed in the appropriate order####
+#### Draw traversal performs several drawing steps which must be executed in the appropriate order
 
 1. Draw the background-绘制背景
 2. If necessary, save the canvas' layers to prepare for fading-有需要时，保存图层
@@ -373,7 +373,7 @@ draw方法开始处的注释对draw的步骤有一个很清楚的描述如下:
 
 所以绘制的流程就是：背景->自身内容->绘制子View->绘制fade效果->绘制装饰View,其中中间的四个步骤通常情况下在新的图层绘制
 
-##总结##
+## 总结
 
 View的测量、布局、绘制我觉得最重要的部分就是measur的过程，这个过程一个重要的类就是MeasureSpec，后面的布局过程依赖与它的结果.三个过程的方法调用流程如下
 

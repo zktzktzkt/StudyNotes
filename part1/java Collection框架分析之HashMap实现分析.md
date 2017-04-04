@@ -1,13 +1,13 @@
-#java Collection框架分析之HashMap实现分析#
+# java Collection框架分析之HashMap实现分析
 ---
 
-##一、HashMap概述##
+## 一、HashMap概述
 
 HashMap是实现了Map接口的哈希表，它与JDK中的HashTable基本相同，但是**HashMap不是同步的**且HashMap允许空key、value，此外对于get、put等基本操作HashMap保证常数级的时间，影响其性能的主要参数为其初始化时的容量和增长因子
 
-##二、实现分析##
+## 二、实现分析
 
-###1、HashMap的数据结构###
+### 1、HashMap的数据结构
 
 ```
 
@@ -18,7 +18,7 @@ HashMap是实现了Map接口的哈希表，它与JDK中的HashTable基本相同�
 
 ```
 
-###2、添加、查找、删除元素的实现###
+### 2、添加、查找、删除元素的实现
 
 + 添加键值对put系列方法：
 
@@ -141,7 +141,7 @@ HashMap是实现了Map接口的哈希表，它与JDK中的HashTable基本相同�
 
 由于HashIterator返回的是一个key-value的键対值的Node节点，所以values() 、entrySet()方法同样也利用了该类来实现遍历，只不过封装类稍有不同 
 
-###4、内存操作###
+### 4、内存操作
 
 先看成员变量threshold(下一次需要重新分配内存的锚值)的初始化
 
@@ -280,7 +280,7 @@ HashMap是实现了Map接口的哈希表，它与JDK中的HashTable基本相同�
 
 同时当红黑树节点过少时，在resize方法中会调用TreeNode的split的方式将红黑树退化为链表
 
-###6、与LinkedHashMap的不同###
+### 6、与LinkedHashMap的不同
 
 相较于子类LinkedHashMap，该类保证了每次遍历时能够得到确定的顺序，具体实现是修改了HashMap的每个键対值的数据结构，将其扩充为可用于链表的存储结构，即LinkedHashMap使用了一个双向链表存储了节点，在遍历数据时通过该数据结构来遍历顺序来保证得到确定的顺序，具体插入节点的代码如下
 
@@ -302,7 +302,7 @@ HashMap是实现了Map接口的哈希表，它与JDK中的HashTable基本相同�
 
 即LinkedHashMap通过重写了创建新节点的方法在创建新节点时将节点插入了链表中，所以**LinkedHashMap遍历的顺序是插入序**,除非节点删除了重新插入否则不会改变遍历顺序
 
-##三、HashMap数据结构总结##
+## 三、HashMap数据结构总结
 
 HashMap在运行过程中会使用根据数据节点的数量使用两种不同的方式来解决哈希冲突的问题，其数据结构的变化如下图
 

@@ -1,16 +1,16 @@
-#java Collection框架分析之LinkedList实现分析#
+# java Collection框架分析之LinkedList实现分析
 ---
 
-##一、LinkedList概述##
+## 一、LinkedList概述
 >Doubly-linked list implementation of the List and Deque interfaces
 
 LinkedList是一种双向链表并且实现了List接口、Deque接口，所以它还可以作为队列来使用，类的声明如下
 
 >public class LinkedList<E> extends AbstractSequentialList<E> implements List<E>, Deque<E>, Cloneable, java.io.Serializable
 
-##二、实现分析##
+## 二、实现分析
 
-###1、LinkedList的数据结构###
+### 1、LinkedList的数据结构
 
 与ArrayList相对，LinkedList使用**双向链表**而非数组来实现线性表的结构，其声明的数据变量以及变量的类如下
 
@@ -34,7 +34,7 @@ LinkedList是一种双向链表并且实现了List接口、Deque接口，所以�
 
 ```
 
-###2、添加、查找、删除元素的实现###
+### 2、添加、查找、删除元素的实现
 
 + 添加的实现add系列方法:这里只看List接口的方法，而不看Deque接口的方法，队列相对而言只是受限的线性表,同样这里有两个add方法，两个addAll方法
 
@@ -128,7 +128,7 @@ LinkedList是一种双向链表并且实现了List接口、Deque接口，所以�
 
 ```
 
-###3、LinkedList元素的遍历-iterator方法###
+### 3、LinkedList元素的遍历-iterator方法
 
 ```
 	

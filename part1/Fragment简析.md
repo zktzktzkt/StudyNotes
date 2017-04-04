@@ -1,8 +1,8 @@
-#Fragment简析#
+# Fragment简析
 ---
 从Android引入Fragment开始，在Android中使用的场景也越来越多，但是我们会发现Fragment相对于View来说实在坑有点多，这篇主要对Fragment做一个较深一点的分析(太深估计也不太行)，主要讨论Fragment与Activity的生命周期如何联动、Activity如何管理Fragment等话题
 
-##一、Fragment基本使用以及过程分析##
+## 一、Fragment基本使用以及过程分析
 
 从Fragment创建添加到Activity开始看
 
@@ -372,7 +372,7 @@ final step-提交事务
 
 上面的一系列分析来看，我们在启动一个事务去操作Fragment时，实际上当时只是记录一组操作，我们提交时才会真正去做操作，同时Fragment的状态切换的核心函数是moveToState，Fragment的生命周期方法在这里连续执行到指定周期。
 
-##二、Fragment如何与Activity的生命周期联动##
+## 二、Fragment如何与Activity的生命周期联动
 
 从上面来看Fragment生命周期即状态切换主要依靠moveToState来，所以这里一个猜想就是Activity在其生命周期方法中做Fragment的状态切换
 
@@ -420,7 +420,7 @@ protected void onCreate(@Nullable Bundle savedInstanceState) {
 
 所以这里就很简单，Acitivity在自己的生命周期内通过Fragment的管理对象去切换Fragment的状态，从而使得Activity与Fragment生命周期的联动
 
-##三、Fragment的恢复过程##
+## 三、Fragment的恢复过程
 
 这里主要看一个Activity被销毁之后Fragment如何恢复
 

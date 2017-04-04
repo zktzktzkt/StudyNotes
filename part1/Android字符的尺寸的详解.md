@@ -1,6 +1,6 @@
-##Android字符的尺寸的详解##
+# Android字符的尺寸的详解
 ---
-#一、Canvas绘制字符的基准点在哪#
+## 一、Canvas绘制字符的基准点在哪
 
 一般来说当我们需要绘制字符的时候，我们都会调用Canvas的drawText系列的重载方法来绘制字符，方法声明是这样的
 
@@ -15,7 +15,7 @@ x	The x-coordinate of the origin of the text being drawn
 y	The y-coordinate of the baseline of the text being drawn
 paint	The paint used for the text (e.g. color, size, style)
 
-#二、关于测量字符时的几个字段的解释#
+## 二、关于测量字符时的几个字段的解释
 先上一张图
 
 ![](https://github.com/getletCodes/StudyNotes/blob/master/part1/font_metrics.png)
@@ -91,7 +91,7 @@ log的截图如下,Paint的ascent、descent只是一个快捷方法和FontMetric
 ```
 bottom和top字段的意思也可如此实验，最后leading是推荐的两行文字之间的间距。
 
-#三、一个绘制多行本的函数的实现#
+## 三、一个绘制多行本的函数的实现
 
 ```
 	public static void drawTextUtil(Canvas canvas,Paint paint,int viewWidth,String text){
@@ -124,5 +124,5 @@ bottom和top字段的意思也可如此实验，最后leading是推荐的两行�
 
 ![](https://github.com/getletCodes/StudyNotes/blob/master/part1/font_draw_demo.png)
 
-#四、总结#
+## 四、总结
 总的来说，只要抓住文本的绘制是依照baseline这个参数来的，那么问题就基本解决了

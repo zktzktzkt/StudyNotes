@@ -1,6 +1,6 @@
-#Gradle学习总结#
+# Gradle学习总结
 ---
-##一、Gradle基本代码块##
+## 一、Gradle基本代码块
 + 插件声明
 
 用于引入Android插件，这样才能够使用Android相关的Gradle构建
@@ -11,7 +11,7 @@
 
 + dependencies依赖代码块
 
-##二、Gradle依赖##
+## 二、Gradle依赖
 + 仓库的概念:
 用于提供jar包等第三方依赖,gradle一共支持三种不同类型的仓库Maven、Ivy、静态文件或文件夹。一般在***repositories***代码块里配置
 
@@ -85,7 +85,7 @@ dependencies{
 }
 ```
 
-##三、varient##
+## 三、varient
 ***Android Studio不会自动创建源集，可以在创建不同文件夹时选择对应的varient***
 + buildTypes:
 
@@ -164,7 +164,7 @@ android {
 ```
 
 
-##四、自定义构建##
+## 四、自定义构建
 
 + BuildConfig和资源
 Gradle在构建时会生成一个叫做BuildConfig的类，该类包含按照构建类型设置的一些值,使用方式如下
@@ -278,7 +278,7 @@ android.applicationVariants.all {
         }
 }
 ```
-##五、Tips##
+## 五、Tips
 
 + 自定义Task中<<表示task中的代码实在执行阶段执行而不是配置阶段执行
 + 使用minifyEnable 和 shrinkResources 来减少apk大小

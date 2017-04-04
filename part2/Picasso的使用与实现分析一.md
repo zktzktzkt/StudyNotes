@@ -1,7 +1,7 @@
-#Picasso的使用与实现分析一#
+# Picasso的使用与实现分析一
 ---
 
-##一、Picasso官网对Picasso的介绍##
+## 一、Picasso官网对Picasso的介绍
 
 * 引言:对于需要加载大量图片的来说，Picasso可以让开发者仅用一行代码集成图片加载功能,同时它还解决了很多常见的Androiod图片加载的一些错误，比如:
 	* 对于处于adapter中的ImageView,当它被回收时自动取消请求
@@ -14,7 +14,7 @@
 	* 支持加载资源文件、assets文件、文件、内容提供者
 	* 调试指示-可以使用setIndicatorsEnabled(true)来在图片源上增加一个色带,不同的颜色表示不同的加载源
 
-##二、Picasso的Sampler如何Picasso##
+## 二、Picasso的Sampler如何Picasso
 
 Picasso的Sample示例中一共演示了五种情况下Picasso的使用:
 * 位于Adapter中的使用
@@ -79,7 +79,7 @@ Picasso的Sample示例中一共演示了五种情况下Picasso的使用:
 
 	```
 
-##三、实现分析##
+## 三、实现分析
 
 以Picasso的Sample的第一种情况来分析整个的加载流程
 

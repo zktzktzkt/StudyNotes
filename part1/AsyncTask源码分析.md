@@ -1,13 +1,13 @@
-#AsyncTask源码分析#
+# AsyncTask源码分析
 ---
 
-##一、AsyncTask简介##
+## 一、AsyncTask简介
 
 AsyncTask适用于后台线程处理任务并将结果发送到UI线程的一个帮助类(围绕Thread和Handler),避免操作线程和Handler，但是它的理想使用场景是相对比较短的耗时任务，其一共包括四个步骤onPreExecute, doInBackground, onProgressUpdate and onPostExecute.
 
 接着一个重要的问题就是它的执行任务的顺序问题:在文档中提到AsyncTask首次被引入时其任务顺序执行于一个单独的后台线程，在1.6之后修改为任务可以利用线程池来并发执行，在3.0之后为了避免一些应用问题又改为单条线程执行任务的逻辑，但是提供了可选的并发执行任务的方法executeOnExecutor(java.util.concurrent.Executor, Object[])
 
-##二、实现分析##
+## 二、实现分析
 
 一般来说我们都是从executor方法开始后台任务的调用，而这个方法最后调用的是如下方法
 
@@ -166,6 +166,6 @@ AsyncTask适用于后台线程处理任务并将结果发送到UI线程的一个
 
 ```
 
-##三、总结##
+## 三、总结
 
 从上面的分析看来AsyncTask是利用线程池来处理后台任务，但是是在主线程中利用SerialExecutor对象来进行任务的调度，而该类是串行的提交任务，所以AsyncTask也是串行的执行，因此我们可以自己实现一个对应的调度类使得AsyncTask可以并发的执行任务。然后关于任务的包装则是通过Callable类、Future类来进行包装即mWorker、mFuture变量的协作，接着关于与主线程的通信则是利用mainLooper的Handler来进行。**最后值得注意的是AsyncTask的相关的线程池、任务提交类等都是静态成员对象**

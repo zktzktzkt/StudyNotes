@@ -1,16 +1,16 @@
-#java Collection框架分析之ArrayList实现分析#
+# java Collection框架分析之ArrayList实现分析
 ----
 
-##一、ArrayList概述##
+## 一、ArrayList概述
 >Resizable-array implementation of the List interface
 
 如文档所说ArrayList是一种基于List接口的可变长数组的实现，类的声明如下
 
 >public class ArrayList<E> extends AbstractList<E> implements List<E>, RandomAccess, Cloneable, java.io.Serializable
 
-##二、问题分析##
+## 二、问题分析
 
-###1、ArrayList的数据结构###
+### 1、ArrayList的数据结构
 
 ArrayList属于线性表的一种，一般来说线性表有两种实现方式：
 
@@ -48,7 +48,7 @@ ArrayList属于线性表的一种，一般来说线性表有两种实现方式�
 
 ```
 
-###2、添加、查找、删除元素的实现###
+### 2、添加、查找、删除元素的实现
 
 + 添加的实现add系列方法：两个add方法，两个addAll方法
 
@@ -154,7 +154,7 @@ ArrayList通过简单的遍历数组元素比较的形式来查找引用是否�
 
 删除vhude逻辑同样很简单：检查边界或者查找元素->elementData数据移动->待删除的元素索引置空即可
 
-###3、ArrayList元素的遍历-iterator方法###
+### 3、ArrayList元素的遍历-iterator方法
 
 这里子分析Iterator迭代器方法的实现，即迭代模式,ArrayList中与迭代器相关的方法一共有三个iterator、listIterator、listIterator(int index)，后者的实现与Iterator类似，只看iterator方法的实现如下
 
@@ -213,7 +213,7 @@ ArrayList通过简单的遍历数组元素比较的形式来查找引用是否�
 
 从Ite的实现来看这个类的方法满足文档所述的ArrayList的迭代器是快速失败的，我们在使用Iterator迭代器遍历目标时不能使用ArrayList类来修改元素
 
-###4、内存操作###
+### 4、内存操作
 
 + 先看每次添加元素内存检查逻辑
 
@@ -264,7 +264,7 @@ ArrayList通过简单的遍历数组元素比较的形式来查找引用是否�
 
 ```
 
-###5、ArrayList的clone###
+### 5、ArrayList的clone
 
 ```
 
@@ -282,7 +282,7 @@ ArrayList通过简单的遍历数组元素比较的形式来查找引用是否�
 
 ```
 
-###6、序列化操作###
+### 6、序列化操作
 
 ```
 
@@ -317,7 +317,7 @@ ArrayList通过简单的遍历数组元素比较的形式来查找引用是否�
 ```
 
 
-##三、与Vector相比的异同##
+## 三、与Vector相比的异同
 
 相同点:
 

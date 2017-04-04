@@ -1,4 +1,4 @@
-#Volley学习-实现分析二#
+# Volley学习-实现分析二
 ---
 
 接一继续分析，从一中可以看到RequestQueue只是负责初始化各种队列、将Rquest加进队列中，真正的网络请求、线程通信在其他地方实现，这里也体现出了消息队列对于解耦的作用，先从RquestQueue的start方法中的两个start的两个东西看是看起,它们类是这样的
@@ -149,7 +149,7 @@ public class NetworkDispatcher extends Thread
 
 ```
 
-##阶段性总结##
+## 阶段性总结
 从这两篇来看，RequestQueue本身作用仅在于启动了一条缓存相关的线程、数条网络请求相关的线程、将请求加入队列，感觉叫RequestManager更合适，同时从NetworkDispatcher、CacheDispatcher的run方法的实现来看，前者是取请求、发请求回调，后者是取请求、检查缓存、回调，那么原理图中的缓存命中直接回调实在哪里实现的呢？关键在于RquestQueue中的PriorityBlockingQueue<Request<?>> mNetworkQueue变量。
 
 通过上面两篇的分析基本可以分析出开头要弄清的前两个问题

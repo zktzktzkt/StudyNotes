@@ -1,7 +1,7 @@
-#View的测量以及绘制流程简要分析一#
+# View的测量以及绘制流程简要分析一
 ---
 
-##一、onMeasure、onLayout、onDraw调用栈的截图##
+## 一、onMeasure、onLayout、onDraw调用栈的截图
 
 ![](https://github.com/getletCodes/StudyNotes/blob/master/part1/picture/onmeasure.png) ![](https://github.com/getletCodes/StudyNotes/blob/master/part1/picture/onLayout.png) ![](https://github.com/getletCodes/StudyNotes/blob/master/part1/picture/ondraw.png)
 
@@ -69,7 +69,7 @@
 
 以上分析也就是网上给出的Activity的布局结构
 
-##二、onMeasure的调用流程##
+## 二、onMeasure的调用流程
 
 这里主要分析onMeasure中两个参数MeasureSpec的生成规则以及ViewGroup如何测量子View
 
@@ -166,7 +166,7 @@
 
 从ViewRootImpl的performTraversals方法中可以了解到的是这里执行了一个View从测量、布局到绘制的三大流程，我们这里只关注测量、布局、绘制的流程，对于不同情况下的测量的调用等不分析(主要也是还看不懂)
 
-###开始看测量流程，先看measureHierarchy方法的部分###
+### 开始看测量流程，先看measureHierarchy方法的部分
 
 ```
 	
@@ -513,7 +513,7 @@
 
 上面的MeasureSpec的生成过程可以了解到子View的MeasureSpec由自身尺寸以及父布局的MeasureSpec共同来决定,我们在XML中设定的宽高规则不一定就是最终的我们在测量时获取的MeasureSpec中的规则
 
-###Measure总结###
+### Measure总结
 
 首先整个测量过程中MeasureSpec是一个核心的作用,View以及ViewGroup通过层次的measure调用来完成整个视图树的测量(performTraversals->(measureHierarchy)->performMeasure->Measure->onMeasure->Measure->onMeasure->......),而每个MeasureSpec的生成规则主要由**父布局的MeasureSpec以及子View的LayoutParams共同决定**。所以当我们在onMeasure中测量时需要自己根据内容或者需求来自己处理MeasureSpec.UNSPECIFIED、MeasureSpec.AT_MOST的情况，这种情况下MeasureSpec中的尺寸值只是表示一个约束。
 

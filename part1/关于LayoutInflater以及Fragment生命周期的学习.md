@@ -1,10 +1,10 @@
-#关于LayoutInflater以及Fragment生命周期的学习#
+# 关于LayoutInflater以及Fragment生命周期的学习
 ---
-##一、文档中关于LayoutInflater的解释##
+## 一、文档中关于LayoutInflater的解释
 
 该类用于实例化布局到指定的对象，不会被直接使用，而是通过getLayoutInflater或者getSystemService(Context.LAYOUT_INFLATER_SERVICE)来获取一个标准的、关联了当前的context和设备的运行时配置的LayoutInflater实例，另外由于性能上的原因只会利用XmlPullParser 处理系统预处理的资源xml，而不能处理直接的文本
 
-##二、创建方法的比较##
+## 二、创建方法的比较
 
 1、LayoutInflater.from(context)创建
 
@@ -58,7 +58,7 @@
 
 ```
 
-##三、inflate方法解析##
+## 三、inflate方法解析
 
 ```
 	//由此开始，当root为空时，第三个参数为false
@@ -182,7 +182,7 @@
 
 ```
 
-##四、关于fragment的生命周期##
+## 四、关于fragment的生命周期
 
 先看官网上的关于生命周期的图片
 

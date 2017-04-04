@@ -1,9 +1,9 @@
-#Picasso的使用与实现分析三#
+# Picasso的使用与实现分析三
 ---
 
 接上篇继续，至此我们已经走完了一遍加载的流程，了解了Picasso的图片加载逻辑，最后对于前面的分析做一个总结
 
-##四、加载逻辑的总结##
+## 四、加载逻辑的总结
 
 * 主要类的作用说明:
 	* Picasso类：主要是用于初始化、请求的消息的发送、回调结果的处理,即提供了请求发送的接口以及请求回调的接口，属于一个管理类
@@ -40,7 +40,7 @@
 * 加载逻辑梳理：
 	首先Picasso类初始化必须组件(任务处理类RequestHandler、任务下载类Downloader、缓存实现类Cache、事件分发类Dispatcher、线程池PicassoExecutorService等)----->请求的预处理(RequestCreator),这里存在缓存检查的逻辑(以及其他)，没有则继续准备创建请求类Request、Action---->Picasso调用Dispatcher开始发送请求提交的消息，同时提交时还有一个请求检查的逻辑，如果有相同的请求存在则取消之前的---->BitmapHunter上场，请求消息的处理是将BitmapHunter、请求Action、请求处理类RequestHandler绑定，然后送到线程池中执行---->BitmapHunter开始加载图片，缓存图片，图片加载完成后由Dispatcher发送加载完成消息，同时这里加载图片之前还会先检查一次缓存---->Picasso接收结果，利用其**主线程HANDLER(Picasso利用了类似Volley的方法，使用Looper.mainLooper来创建Handler从而利用该Handler将事件调度到主线程中)**来将结果发送到主线程中并回调监听
 
-##五、自问自答##
+## 五、自问自答
 
 * 内存缓存空间大小的怎么改变；
 
