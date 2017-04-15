@@ -132,7 +132,7 @@ protected Class<?> findClass(final String name) throws ClassNotFoundException
 
 所以思路就是:根据apk获取dex文件->获取DexFile对象->将DexFile对象加入到PathList中.
 
-一个关于加载外部apk的Activity的例子![load_apk_demo](https://github.com/stdnull/demo/tree/master/load_apk_demo)
+一个关于加载外部apk的Activity的例子[load_apk_demo](https://github.com/stdnull/demo/tree/master/load_apk_demo)
 
 ### 参考
-+ ![Android 插件化原理解析——插件加载机制](http://weishu.me/2016/04/05/understand-plugin-framework-classloader/)
++ [Android 插件化原理解析——插件加载机制](http://weishu.me/2016/04/05/understand-plugin-framework-classloader/)
