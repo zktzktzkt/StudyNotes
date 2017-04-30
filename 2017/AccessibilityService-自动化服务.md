@@ -90,4 +90,4 @@ Service的生命周期方法,标志Service被系统启动
 
 用于描述Service的配置行为,可以通过setServiceInfo方法动态的设置给AccessibilityService
 
-最后一个简单的![抢红包插件的demo]()
+最后一个简单的[抢红包插件的demo](https://github.com/stdnull/demo/tree/master/accessibility_demo)
