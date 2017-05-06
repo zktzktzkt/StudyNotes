@@ -91,7 +91,7 @@ FileItemIteratorImpl(RequestContext ctx) throws FileUploadException, IOException
     if (charEncoding == null) {
         charEncoding = ctx.getCharacterEncoding();
     }
-    //获取content-type中的Content-Type:multipart/form-data; boundary=----WebKitFormBoundaryQDPv1LHuBVgxrNc4 此处解析方法见2.1
+    //获取content-type中的Content-Type:multipart/form-data; boundary=----WebKitFormBoundaryQDPv1LHuBVgxrNc4 此处解析方法见3.1
     boundary = getBoundary(contentType);
     if (boundary == null) {
         throw new FileUploadException("the request was rejected because no multipart boundary was found");
@@ -408,7 +408,7 @@ FileItemStreamImpl(String pName, String pFieldName, String pContentType, boolean
 }
 ```
 
-step 4:FileItem核心-输入流的创建
+step 5:FileItem核心-输入流的创建
 
 ```
 ItemInputStream newInputStream() {
