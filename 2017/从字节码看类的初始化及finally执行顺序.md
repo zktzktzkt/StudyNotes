@@ -167,9 +167,10 @@ Constant pool:
         23: ireturn
       Exception table:
          from    to  target type
-             0     4     8   Class java/lang/Exception //如果0~4行出现异常为Exception异常则跳转到第8行代码
+             0     4     8   Class java/lang/Exception //如果0~4行(不包括4)出现异常为Exception异常则跳转到第8行代码
              0     4    17   any    //如果0~4行出现任何异常则跳转到第17行代码
-             8    13    17   any    
+             8    13    17   any
+          //此处可见stackoverflowhttp://stackoverflow.com/questions/6386917/strange-exception-table-entry-produced-by-suns-javac 
             17    19    17   any
 }
 ```
