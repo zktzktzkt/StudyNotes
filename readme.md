@@ -3,6 +3,7 @@
 
 # 2017
 ## 5月
+* [从字节码看类的初始化及finally执行顺序](https://github.com/stdnull/StudyNotes/blob/master/2017/从字节码看类的初始化及finally执行顺序.md)
 * [从commons-fileUpload学习HTTP文件上传](https://github.com/stdnull/StudyNotes/blob/master/2017/从commons-fileUpload学习HTTP文件上传.md)
 ## 4月
 * [AccessibilityService-自动化服务](https://github.com/stdnull/StudyNotes/blob/master/2017/AccessibilityService-自动化服务.md)
