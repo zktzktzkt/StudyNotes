@@ -176,3 +176,65 @@ Constant pool:
 ```
 
 从上面的字节码和注释我们会发现finally代码快之所会执行是因为,java编译时将finally代码块中的代码插入到try-catch之间的每一个代码块最后,这样才保证了finally的执行,但是finally代码块是不是一定会执行呢,其实并不然,由于finally代码块是被插入到每个每个代码块最后,所以如果在执行finally代码块代码之前进程退出等情况发生,则finally不会执行,具体见[官网链接finally说明](https://docs.oracle.com/javase/tutorial/essential/exceptions/finally.html)
+
+## 3 一个关于finally的题目
+
+如下代码的返回值是什么?
+
+```
+public static int test(){
+	int a = 0;
+	try{
+		int b = a/0;
+	}catch(Exception e){
+		a = 30;
+		return a;
+	}
+	finally{
+		a = 40;
+	}
+	return a;
+}
+```
+
+话不多说,这道题的答案是返回值是30,那么为什么,同样首先看字节码,截取部分如下
+
+```
+ public static int test();
+    descriptor: ()I
+    flags: ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=4, args_size=0
+         0: iconst_0
+         1: istore_0
+         2: iload_0
+         3: iconst_0
+         4: idiv            // a/0 这一步发生异常,根据异常表跳转到12
+         5: istore_1
+         6: bipush        40
+         8: istore_0
+         9: goto          29
+        12: astore_1        
+        13: bipush        30 //将常量30推到栈顶
+        15: istore_0         //存储30到第一个临时变量中
+        16: iload_0          //将第一个临时变量送到栈顶
+        17: istore_2		 //存储栈顶值到第二个临时变量
+        18: bipush        40 
+        20: istore_0         //将40存储到第一个临时变量
+        21: iload_2			 //将第二个临时变量送到栈顶	
+        22: ireturn          //返回栈顶值
+        23: astore_3
+        24: bipush        40
+        26: istore_0
+        27: aload_3
+        28: athrow
+        29: iload_0
+        30: ireturn
+      Exception table:
+         from    to  target type
+             2     6    12   Class java/lang/Exception
+             2     6    23   any
+            12    18    23   any
+```
+
+显然finally语句虽然会被插入到返回语句之前,但是它不会改变原先的逻辑,而是引入了新的临时变量来处理数据,它们属于不同的作用域.
