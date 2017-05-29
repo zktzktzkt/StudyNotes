@@ -218,6 +218,10 @@ private void installNewPackageLI(PackageParser.Package pkg, int parseFlags, int 
 }
 ```
 
+最后scanPackageLI会将apk的信息存入到变量mPackages(存储了系统安装的所有信息信息)中,代码段如下
+
+![](https://github.com/stdnull/StudyNotes/blob/master/2017/picture/package_in_system_memory.png)
+
 ## 2. 系统开机时应用信息的初始化
 
 系统开机时会启动PackageManagerService来读取已安装应用,并解析apk将信息存入到内存中,同时还会根据需要进行dex优化的操作
