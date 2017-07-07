@@ -64,7 +64,7 @@ Retention注解取值如下
 ## 自定义注解处理器
 
 ### 基本自定义注解处理器开发的介绍
-这部分主要介绍关于编译时注解处理器开发的基础部分包括项目结构的划分、基本demo的制作的一些要点、Anroid Studio中Debug的配置
+这部分主要介绍关于编译时注解处理器开发的基础部分包括项目结构的划分、[基本demo](https://github.com/stdnull/demo/tree/master/apdemo)的制作的一些要点、Anroid Studio中Debug的配置
 
 #### 项目结构的划分
 这个可以参见一些优秀的开源库来学习一下,比如butterknife的项目划分-annotation注解、processor处理器、app工程这三个部分单独做一个library,然后依赖关系如下图
