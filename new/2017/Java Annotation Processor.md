@@ -75,6 +75,18 @@ Retention注解取值如下
 
 1.创建一个自定义类继承自AbstractProcessor,并实现两个方法getSupportedAnnotationTypes(返回需要处理的注解类型)、getSupportedSourceVersion(返回需要支持的java版本),如下
 
+```
+@Override
+public Set<String> getSupportedAnnotationTypes() {
+    Set<String> supports = new HashSet<>();
+    supports.add(HelloWorld.class.getCanonicalName());
+    return supports;
+}
+@Override
+public SourceVersion getSupportedSourceVersion() {
+    return SourceVersion.latestSupported();
+}
+```
 2.配置Service
 
 由于注解处理器是在编译时由javac自动调用,所以需要为注解处理器的lib注册自定义的注解处理器的入口,这里可以直接使用google的AutoService库,生成Service的配置文件如下
@@ -112,5 +124,6 @@ org.gradle.jvmargs=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address
 
 ## 参考链接
 
-[注解处理器教程](http://hannesdorfmann.com/annotation-processing/annotationprocessing101)
-[注解处理器Debug](https://stackoverflow.com/questions/8587096/how-do-you-debug-java-annotation-processors-using-intellij)
++ [注解处理器教程](http://hannesdorfmann.com/annotation-processing/annotationprocessing101)
+
++ [注解处理器Debug](https://stackoverflow.com/questions/8587096/how-do-you-debug-java-annotation-processors-using-intellij)
