@@ -59,7 +59,7 @@ void rInflate(XmlPullParser parser, View parent, Context context, AttributeSet a
 
 #### ViewStub自身优化
 
-+ 1.绘制相关优化
++ 绘制相关优化
 
 这个不多说,看代码
 
