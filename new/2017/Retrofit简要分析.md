@@ -17,7 +17,6 @@ Retrofit retrofit = new Retrofit.Builder()
 + adapterFactories:UnmodifiableRandomAccessList,默认包含一个item-ExecutorCallAdapterFactory
 + converterFactories:UnmodifiableRandomAccessList默认包含一个item-BuiltInConverters
 + validateEagerly:false
-```
 
 接着从创建api接口的实现类开始,比如官方教程中的创建一个GitHub Api
 
@@ -331,4 +330,4 @@ Response<T> parseResponse(okhttp3.Response rawResponse) throws IOException {
 }
 ```
 
-ok,到这里就结束了,因为Retrofit是基于okhttp的网络请求的框架,所以我觉得对于Retrofit的理解应该侧重与它如何在自己的基础上将参数转化为OkHttp发送网络请求所需要的参数(requestBodyConverter)以及如何将OkHttp返回的reponse转化为用户所需要的数据结构(responseBodyConverter).最后对应的分析的源码版本为Retrofit 2.3(逃.
+ok,到这里就结束了,因为Retrofit是基于okhttp的网络请求的框架(**所以有的时候可以直接使用okhttp的方法来构建参数**),所以我觉得对于Retrofit的理解应该侧重与它如何在自己的基础上将参数转化为OkHttp发送网络请求所需要的参数(requestBodyConverter)以及如何将OkHttp返回的reponse转化为用户所需要的数据结构(responseBodyConverter).最后对应的分析的源码版本为Retrofit 2.3(逃.
