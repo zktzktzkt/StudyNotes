@@ -1,7 +1,7 @@
 # Study Notes-2016
 ---
 ## 12月
-* [Activity创建过程函数调用流程](https://github.com/stdnull/StudyNotes/blob/master/2016/10月12月/Android Activity启动过程概述.md)
+* [Activity创建过程函数调用流程](https://github.com/stdnull/StudyNotes/blob/master/2016/10月12月/Android%20Activity启动过程概述.md)
 * [Gradle学习总结](https://github.com/stdnull/StudyNotes/blob/master/2016/10月12月/Gradle学习总结.md)
 
 ## 11月
@@ -9,11 +9,11 @@
 * [Fragment简析](https://github.com/stdnull/StudyNotes/blob/master/2016/10月11月/Fragment简析.md)
 
 ## 10月
-* [Android Transitions Framework入门](https://github.com/stdnull/StudyNotes/blob/master/2016/10月/Android Transitions Framework入门.md)
-* [ArrayList实现浅析](https://github.com/stdnull/StudyNotes/blob/master/2016/10月/java Collection框架分析之ArrayList实现分析.md)
-* [LinkedList实现浅析](https://github.com/stdnull/StudyNotes/blob/master/2016/10月/java Collection框架分析之LinkedList实现分析.md)
-* [HashMap实现浅析](https://github.com/stdnull/StudyNotes/blob/master/2016/10月/java Collection框架分析之HashMap实现分析.md)
-* [HashSet实现浅析](https://github.com/stdnull/StudyNotes/blob/master/2016/10月/java Collection框架分析之HashSet实现简述.md)
+* [Android Transitions Framework入门](https://github.com/stdnull/StudyNotes/blob/master/2016/10月/Android%20Transitions Framework入门.md)
+* [ArrayList实现浅析](https://github.com/stdnull/StudyNotes/blob/master/2016/10月/java%20Collection框架分析之ArrayList实现分析.md)
+* [LinkedList实现浅析](https://github.com/stdnull/StudyNotes/blob/master/2016/10月/java%20Collection框架分析之LinkedList实现分析.md)
+* [HashMap实现浅析](https://github.com/stdnull/StudyNotes/blob/master/2016/10月/java%20Collection框架分析之HashMap实现分析.md)
+* [HashSet实现浅析](https://github.com/stdnull/StudyNotes/blob/master/2016/10月/java%20Collection框架分析之HashSet实现简述.md)
 * [js基本语法](https://github.com/stdnull/StudyNotes/blob/master/2016/10月/JavaScrip基本语法.md)
 
 ## 9月
