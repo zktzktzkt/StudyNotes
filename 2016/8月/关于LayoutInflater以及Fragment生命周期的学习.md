@@ -188,11 +188,11 @@
 
 Fragment的生命周期是这样的：
 
-![](https://github.com/getletCodes/StudyNotes/blob/master/part1/fragment_lifecycle.png)
+![](https://github.com/getletCodes/StudyNotes/blob/master/resources/blog/2016/fragment_lifecycle.png)
 
 Activity 生命周期对片段生命周期的影响是这样的：
 
-![](https://github.com/getletCodes/StudyNotes/blob/master/part1/activity_fragment_lifecycle.png)
+![](https://github.com/getletCodes/StudyNotes/blob/master/resources/blog/2016/activity_fragment_lifecycle.png)
 
 接着关注它的onCreateView方法：文档中说到container参数是您的片段布局将插入到的父 ViewGroup（来自 Activity的布局），savedInstanceState参数是在恢复片段时，提供上一片段实例相关数据的 Bundle。同时一般来说在这里我们使用inflater时一般将attach这个boolean设置为false,文档中说到这是为了避免布局的嵌套、冗余(如果传入true,那么返回的View仍是container),最后文档中提到如果没有UI，
 可以让其为Activity提供后台行为

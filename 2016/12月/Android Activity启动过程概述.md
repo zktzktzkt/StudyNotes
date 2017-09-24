@@ -2232,8 +2232,8 @@ Step 20
 
 由于开始看DroidPlugin框架相关的源码，所以这里也根据上述过程画了一个简单调用流程图，如下
 
-![](https://github.com/stdnull/StudyNotes/blob/master/part1/picture/start_activity_call_part1.png)
-![](https://github.com/stdnull/StudyNotes/blob/master/part1/picture/start_activity_call_part2.png)
+![](https://github.com/stdnull/StudyNotes/blob/master/resources/blog/2016/start_activity_call_part1.png)
+![](https://github.com/stdnull/StudyNotes/blob/master/resources/blog/2016/start_activity_call_part2.png)
 所以总的看来，整个调用过程为Activity类将调用请求到->ActivityManagerService->ActivityStackSupervior/ActivityStack进行Activity校验和活动栈的处理->ActivityThread尽心Activity的创建、生命周期的调用。
 
 此外参考[这篇博客](http://weishu.me/2016/01/28/understand-plugin-framework-proxy-hook/)进行Hook时,发现他只是hook ActivityThread中的mInstrument,明明与Activity调用逻辑不同，但是最后hook是成功的，一时不解，但是通过上述源码的调用过程会发现，**Activity中的mInstrument变量实质上是ActivityThread 在performLaunchActivity方法中创建Activity时将自己的mInstrument attch给Actvity的**

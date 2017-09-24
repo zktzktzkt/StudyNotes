@@ -69,7 +69,7 @@ Retention注解取值如下
 #### 项目结构的划分
 这个可以参见一些优秀的开源库来学习一下,比如butterknife的项目划分-annotation注解、processor处理器、app工程这三个部分单独做一个library,然后依赖关系如下图
 
-![](https://github.com/stdnull/StudyNotes/blob/master/new/2017/picture/annotation_project_structure.png)
+![](https://github.com/stdnull/StudyNotes/blob/master/resources/blog/2017/annotation_project_structure.png)
 
 #### 基本demo制作
 
@@ -114,13 +114,13 @@ org.gradle.jvmargs=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address
 
 2.在Edit Configuration中配置默认的Remote Configration,如下图 
 
-![](https://github.com/stdnull/StudyNotes/blob/master/new/2017/picture/ap_debug_remote_configuration.png)
+![](https://github.com/stdnull/StudyNotes/blob/master/resources/blog/2017/ap_debug_remote_configuration.png)
 
 3.在控制台中运行 gradlew.bat app:compileDebugJavaWithJavac --debug
 
 4.添加断点,执行compleDebugSource task,如下图
 
-![](https://github.com/stdnull/StudyNotes/blob/master/new/2017/picture/ap_debug_compile_source.png)
+![](https://github.com/stdnull/StudyNotes/blob/master/resources/blog/2017/ap_debug_compile_source.png)
 
 ## 参考链接
 

@@ -23,7 +23,7 @@ volley是一个http库，它能够让android app的网络访问更加简单、�
 
 官网的工作原理图如下
 
-![](https://github.com/getletCodes/StudyNotes/blob/master/part2/volley-request.png)
+![](https://github.com/getletCodes/StudyNotes/blob/master/resources/blog/2016/volley-request.png)
 
 取消请求可以调用cancel方法，一旦调用，volley保证你的监听回调不会被调用，一般在onStop方法中调用和Activity的生命周期进行联动，此外为了更好的使用这个方法，可以为每个请求加上一个tag，然后可以利用这个tag来取消一个域的请求
 

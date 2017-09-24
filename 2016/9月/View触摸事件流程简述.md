@@ -2,7 +2,7 @@
 ---
 首先看一个方法调用的截图
 
-![](https://github.com/getletCodes/StudyNotes/blob/master/part1/picture/touch_event.png)
+![](https://github.com/getletCodes/StudyNotes/blob/master/resources/blog/2016/touch_event.png)
 
 ViewRootImpl类中中使用内部类ViewPostImeInputStage的processPointerEvent把事件传递给DecorView
 

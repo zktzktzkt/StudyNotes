@@ -12,7 +12,7 @@ Drawable是对于那种可绘制的东西的抽象。
 
 最后文档中提到关于.9图的黑线的意思，左边及上面的黑线表示可拉伸的区域,附带一张官网的图
 
-![](https://github.com/getletCodes/StudyNotes/blob/master/part1/ninepatch_raw.png)
+![](https://github.com/getletCodes/StudyNotes/blob/master/resources/blog/2016/ninepatch_raw.png)
 
 ###2、部分子类的作用###
 
@@ -259,5 +259,5 @@ class RoundBitmapDrawable extends Drawable{
 
 效果图如下
 
-![](https://github.com/getletCodes/StudyNotes/blob/master/part1/round_circle_drawable.png)
+![](https://github.com/getletCodes/StudyNotes/blob/master/resources/blog/2016/round_circle_drawable.png)
     

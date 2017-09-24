@@ -113,7 +113,7 @@
  * 请求如何取消
  	首先取消的API有如下几个，见下图
 
- 	![](https://github.com/getletCodes/StudyNotes/blob/master/part2/picasso_cancacel.png)
+ 	![](https://github.com/getletCodes/StudyNotes/blob/master/resources/blog/2016/picasso_cancacel.png)
 
  	以ImageView为参数为例来查看取消的逻辑
 

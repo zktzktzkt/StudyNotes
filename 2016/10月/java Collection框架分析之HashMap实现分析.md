@@ -306,4 +306,4 @@ HashMap是实现了Map接口的哈希表，它与JDK中的HashTable基本相同�
 
 HashMap在运行过程中会使用根据数据节点的数量使用两种不同的方式来解决哈希冲突的问题，其数据结构的变化如下图
 
-![](https://github.com/getletCodes/StudyNotes/blob/master/part1/picture/hashmap_datastruct.png)
+![](https://github.com/getletCodes/StudyNotes/blob/master/resources/blog/2016/hashmap_datastruct.png)

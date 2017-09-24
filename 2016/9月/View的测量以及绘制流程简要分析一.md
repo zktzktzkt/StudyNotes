@@ -3,7 +3,7 @@
 
 ## 一、onMeasure、onLayout、onDraw调用栈的截图
 
-![](https://github.com/getletCodes/StudyNotes/blob/master/part1/picture/onmeasure.png) ![](https://github.com/getletCodes/StudyNotes/blob/master/part1/picture/onLayout.png) ![](https://github.com/getletCodes/StudyNotes/blob/master/part1/picture/ondraw.png)
+![](https://github.com/getletCodes/StudyNotes/blob/master/resources/blog/2016/onmeasure.png) ![](https://github.com/getletCodes/StudyNotes/blob/master/resources/blog/2016/onLayout.png) ![](https://github.com/getletCodes/StudyNotes/blob/master/resources/blog/2016/ondraw.png)
 
 一个very long的调用栈，不过从这三幅图可以看到绘制起点ViewRootImpl类开始到视图树最下端的调用流程
 

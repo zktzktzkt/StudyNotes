@@ -18,7 +18,7 @@ paint	The paint used for the text (e.g. color, size, style)
 ## 二、关于测量字符时的几个字段的解释
 先上一张图
 
-![](https://github.com/getletCodes/StudyNotes/blob/master/part1/font_metrics.png)
+![](https://github.com/getletCodes/StudyNotes/blob/master/resources/blog/2016/font_metrics.png)
 
 然后从绘制看起，先用这样的代码绘制一段text
 
@@ -70,7 +70,7 @@ paint	The paint used for the text (e.g. color, size, style)
 ```
 log的截图如下,Paint的ascent、descent只是一个快捷方法和FontMetrics中的值相同。然后根据图示的来实验一下各个参数是否是正确的意思
 
-![](https://github.com/getletCodes/StudyNotes/blob/master/part1/font_draw_log.png)
+![](https://github.com/getletCodes/StudyNotes/blob/master/resources/blog/2016/font_draw_log.png)
 
 ```
 	//修改一下y坐标为ascent值，果然文字就全部绘制出来了
@@ -122,7 +122,7 @@ bottom和top字段的意思也可如此实验，最后leading是推荐的两行�
 ```
 效果如下，其中蓝色是自己绘制的，黑色为TextView绘制的，通过对照可以看出来，完全一致，并且重合了两行
 
-![](https://github.com/getletCodes/StudyNotes/blob/master/part1/font_draw_demo.png)
+![](https://github.com/getletCodes/StudyNotes/blob/master/resources/blog/2016/font_draw_demo.png)
 
 ## 四、总结
 总的来说，只要抓住文本的绘制是依照baseline这个参数来的，那么问题就基本解决了

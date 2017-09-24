@@ -12,7 +12,7 @@
 ## 2、Sync继承结构
 由于ReentrantLock内部方法执行时基本上都将调用Sync的相应方法去完成，即使用Sync类来作为基础的锁的同步控制，所以Sync是ReentrantLock的核心对象。所以先简单看下Sync类的结构，如下图
 
-![](https://github.com/stdnull/StudyNotes/blob/master/2017/picture/sync_class.png)
+![](https://github.com/stdnull/StudyNotes/blob/master/resources/blog/2017/sync_class.png)
 
 ## 3、基本方法分析
 

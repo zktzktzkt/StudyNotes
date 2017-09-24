@@ -52,7 +52,7 @@
 
 效果如下
 
-![](https://github.com/getletCodes/StudyNotes/blob/master/part1/view_pager_demo.gif)
+![](https://github.com/getletCodes/StudyNotes/blob/master/resources/blog/2016/view_pager_demo.gif)
 
 ## 二、PagerAdapter中基本方法介绍
 

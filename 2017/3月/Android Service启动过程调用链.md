@@ -627,10 +627,10 @@
 
 **startService调用链**
 
-![](https://github.com/stdnull/StudyNotes/blob/master/2017/picture/start_service_call.png)
+![](https://github.com/stdnull/StudyNotes/blob/master/resources/blog/2017/start_service_call.png)
 
 **bindService调用链**
 
-![](https://github.com/stdnull/StudyNotes/blob/master/2017/picture/bind_service_call.png)
+![](https://github.com/stdnull/StudyNotes/blob/master/resources/blog/2017/bind_service_call.png)
 
 这样可以直观的看到在启动Service过程中处于核心的类以及bindService逻辑与startService在创建Service的逻辑上是相同的，只是前者多了绑定的过程。

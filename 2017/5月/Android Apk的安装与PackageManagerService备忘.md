@@ -220,7 +220,7 @@ private void installNewPackageLI(PackageParser.Package pkg, int parseFlags, int 
 
 最后scanPackageLI会将apk的信息存入到变量mPackages(存储了系统安装的所有信息信息)中,代码段如下
 
-![](https://github.com/stdnull/StudyNotes/blob/master/2017/picture/package_in_system_memory.png)
+![](https://github.com/stdnull/StudyNotes/blob/master/resources/blog/2017/package_in_system_memory.png)
 
 ## 2. 系统开机时应用信息的初始化
 
