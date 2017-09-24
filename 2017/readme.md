@@ -1,7 +1,7 @@
 # Study Notes-2017
 ---
 ## 9月
-* [Retrofit简要分析](https://github.com/stdnull/StudyNotes/blob/master/2017/9月/ButterKnife%20annotation信息收集过程.md)
+* [ButterKnife annotation信息收集过程](https://github.com/stdnull/StudyNotes/blob/master/2017/9月/ButterKnife%20annotation信息收集过程.md)
 ## 8月
 * [Retrofit简要分析](https://github.com/stdnull/StudyNotes/blob/master/2017/8月/Retrofit简要分析.md)
 * [EventBus v2详解](https://github.com/stdnull/StudyNotes/blob/master/2017/8月/EventBus%20v2详解.md)
